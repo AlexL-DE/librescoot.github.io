@@ -6,6 +6,8 @@ date: 2026-11-01
 published: true
 summary: "Multi-stop routes with an overview and the option to resume after a break, a clock that keeps running through Hibernation, and a more versatile dashboard. Android phone keys with Librescoot Mobile and a trip log add to the everyday improvements."
 icon: map
+image: /images/news/librescoot-1-4.png
+image_alt: "Librescoot wordmark, v1.4.0 and the codename Spätsommer beside a sunrise"
 ---
 
 Librescoot 1.4.0 "Spätsommer" expands navigation with multi-stop routes, an overview of the whole tour and the option to resume after a break. The clock keeps running through Hibernation, the shortcut menu gains more options, and the dashboard gets unified notifications, customizable colors and smooth transitions. With the Librescoot Mobile app, an Android phone can also serve as a key, while a trip log records your rides.

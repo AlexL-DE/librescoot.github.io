@@ -6,6 +6,8 @@ date: 2026-11-01
 published: true
 summary: "Mehrstopp-Routen mit Übersicht und Fortsetzung nach einer Pause, eine Uhr, die durch die Hibernation weiterläuft, und ein vielseitigerer Tacho. Dazu kommen Android-Smartphone-Schlüssel mit Librescoot Mobile und ein Fahrtenbuch."
 icon: map
+image: /images/news/librescoot-1-4.png
+image_alt: "Librescoot-Schriftzug, v1.4.0 und der Codename Spätsommer neben einem Sonnenaufgang"
 ---
 
 Librescoot 1.4.0 "Spätsommer" erweitert die Navigation um Routen mit mehreren Stopps, eine Übersicht über die ganze Tour und die Fortsetzung nach einer Pause. Die Uhr läuft während der Hibernation weiter, das Schnellmenü bekommt mehr Möglichkeiten und der Tacho einheitliche Meldungen, anpassbare Farben und fließende Übergänge. Mit der Librescoot Mobile App kann außerdem ein Android-Smartphone als Schlüssel dienen; ein Fahrtenbuch hält die gefahrenen Strecken fest.
