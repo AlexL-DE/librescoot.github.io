@@ -1,0 +1,47 @@
+---
+lang: en
+layout: docs
+title: Dashboard Customization
+description: Light and dark themes, configurable indicators and clock visibility.
+redirect_from:
+  - /docs/features/dashboard-customization.html
+  - /docs/stable/features/dashboard-customization.html
+---
+<h1>Dashboard Customization</h1>
+<p class="lead">Light and dark themes, configurable indicators and clock visibility.</p>
+
+<section class="docs-section">
+    <h2>Display themes</h2>
+    <p>Choose a light or dark theme in the settings menu. Brightness adjusts to ambient light.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Configurable elements</h2>
+    <p>Control what shows on your dashboard:</p>
+
+    <ul class="docs-list">
+        <li><strong>Clock visibility</strong>: show or hide the time; GPS sets it once a fix is available</li>
+        <li><strong>Battery display mode</strong>: percentage or range</li>
+        <li><strong>Status icons</strong>: toggle individual indicators on or off</li>
+        <li><strong>Map rendering</strong>: vector or raster tiles</li>
+    </ul>
+    <p>The scooter has no battery-backed real-time clock (RTC) to keep time while powered off. The dashboard sets its clock from GPS once it gets a fix, including when riding offline.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Milestone celebrations</h2>
+    <p>When enabled, the dashboard marks 10 km, then each 100 km. A short notice appears when you cross a milestone; optional banners and confetti appear when you next park.</p>
+    <p>In the Appearance settings, choose <strong>Milestones</strong>: Off, Regular, or Regular + Easter eggs. <strong>Milestone presentation</strong> selects Small notice, Banner, or Banner + confetti. Milestones are off by default.</p>
+
+    <pre class="code-block">lsc settings set dashboard.milestones.mode all
+lsc settings set dashboard.milestones.presentation banner-and-confetti</pre>
+</section>
+
+<section class="docs-section">
+    <h2>Settings</h2>
+    <p>Change dashboard settings in the on-screen menu (double-tap the left brake), on <a href="../lsc.html#web-interface"><code>lsd</code></a>'s Settings page, or with <code>lsc</code>:</p>
+
+    <pre class="code-block">lsc settings list                          # See all settings
+lsc settings set dashboard.map.type offline  # Switch to offline maps
+lsc settings set dashboard.theme dark        # Dark theme</pre>
+</section>

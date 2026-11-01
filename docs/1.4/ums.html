@@ -1,0 +1,153 @@
+---
+lang: en
+layout: docs
+title: USB File Transfer (Update Mode)
+description: How to transfer files to and from your scooter using Update Mode (USB Mass Storage).
+redirect_from:
+  - /docs/ums.html
+  - /docs/stable/ums.html
+---
+<h1>USB File Transfer (Update Mode)</h1>
+<p class="lead">Update Mode exposes a virtual drive on your computer over USB Mass Storage. Copy files to it, eject, and the scooter processes them automatically.</p>
+<p>For browser-based transfers while USB is in network mode, use <a href="lsc.html#web-interface"><code>lsd</code></a>'s Files page, or its Updates page for firmware uploads.</p>
+
+<section class="docs-section">
+    <h2 id="activate-ums-mode">Entering Update Mode</h2>
+    <p>There are two ways to enter Update Mode:</p>
+
+    <h3>From the dashboard</h3>
+    <ol class="docs-list">
+        <li>Double-tap the left brake to open the menu</li>
+        <li>Go to <strong>Settings</strong> → <strong>System</strong> → <strong>Update Mode…</strong></li>
+    </ol>
+
+    <h3>From the CLI</h3>
+    <pre class="code-block">lsc usb ums</pre>
+    <p>To switch back to normal (network) mode:</p>
+    <pre class="code-block">lsc usb normal</pre>
+</section>
+
+<section class="docs-section">
+    <h2>Leaving Update Mode</h2>
+    <p>Hold the <strong>left brake for 3 seconds</strong>. The dashboard shows the hold as <em>Cancel</em> while Update Mode is still preparing, and as <em>Exit</em> once the drive is live.</p>
+
+    <ul class="docs-list">
+        <li><strong>While preparing:</strong> the entry is abandoned before the USB gadget switches over, so the network connection is never dropped.</li>
+        <li><strong>Once active:</strong> the scooter switches the USB port back to network mode and processes whatever is on the drive, exactly as it does after an eject. Eject on your computer first so the files are fully written.</li>
+    </ul>
+
+    <p>No other gesture leaves Update Mode. A right brake press or a seatbox tap is ignored on purpose, so a stray input can't interrupt a transfer. <code>lsc usb normal</code> works too.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Transferring files</h2>
+    <ol class="docs-list">
+        <li>Open the footwell with a PH2 Phillips or H4 hex driver to reach the MDB. Its Mini-B port is normally occupied by the internal DBC USB cable.</li>
+        <li>Undo the cable's retaining screw with a flat-head or PH1 screwdriver, then disconnect the internal DBC USB cable from the MDB.</li>
+        <li>Connect your computer to that Mini-B port. A drive appears on your computer.</li>
+        <li>Copy files into the appropriate folder (see below).</li>
+        <li>Safely eject the drive. The scooter processes everything on it, then reboots if a firmware update was among it.</li>
+        <li>Leave Update Mode, disconnect your computer, then reconnect and secure the internal DBC USB cable.</li>
+    </ol>
+
+    <div class="step-images">
+        <div>
+            <img src="/images/install/lsi-unu_scooter_footwell_open.jpg" alt="Open scooter footwell, showing the MDB in its installation position">
+            <p class="step-image-caption">The MDB sits in the open footwell.</p>
+        </div>
+        <div>
+            <img src="/images/install/lsi-mdb_usb_dbc.jpg" alt="Internal DBC USB cable unplugged from the MDB Mini-B port">
+            <p class="step-image-caption">Disconnect the internal DBC USB cable to free the Mini-B port.</p>
+        </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 12px;">
+        <strong>The drive is limited to 1 GB</strong><br>
+        Larger regional packages can fill it on their own (e.g. the Netherlands display tiles at ~540 MB, or the uncompressed Valhalla tiles for Bavaria at ~725 MB), and combinations like <code>.mbtiles</code> + routing tiles often won't fit at once. The compressed <code>.tar.zst</code> routing archives are roughly a third of the plain size and often make a combination fit, but when it still exceeds the drive, do it in two sessions: install the display map (<code>.mbtiles</code>) first, eject and let the scooter apply it, then re-enter Update Mode for the routing tiles.
+    </div>
+</section>
+
+<section class="docs-section">
+    <h2>What's on the drive</h2>
+    <p>The scooter creates these folders when Update Mode starts.</p>
+
+    <table class="services-table">
+        <thead><tr><th>Path</th><th>Direction</th><th>What it's for</th></tr></thead>
+        <tbody>
+            <tr><td><code>system-update/</code></td><td>you fill it</td><td>Firmware artifacts, <code>.mender</code> or <code>.delta</code></td></tr>
+            <tr><td><code>maps/</code></td><td>you fill it</td><td>Map display tiles and Valhalla routing tiles</td></tr>
+            <tr><td><code>rpms/mdb/</code>, <code>rpms/dbc/</code></td><td>you fill it</td><td>RPM packages to install on that board</td></tr>
+            <tr><td><code>scripts/mdb.sh</code>, <code>scripts/dbc.sh</code></td><td>you fill it</td><td>Shell scripts run once on that board</td></tr>
+            <tr><td><code>settings.toml</code></td><td>round-trip</td><td>Current settings, exported for you to edit and read back</td></tr>
+            <tr><td><code>wireguard/</code></td><td>round-trip</td><td>WireGuard configs, exported and read back</td></tr>
+            <tr><td><code>radio-gaga/config.yaml</code></td><td>round-trip</td><td>radio-gaga telemetry config</td></tr>
+            <tr><td><code>uplink-service/config.yaml</code></td><td>round-trip</td><td>uplink-service config</td></tr>
+            <tr><td><code>onboot.sh</code></td><td>round-trip</td><td>Script the scooter runs on every boot</td></tr>
+            <tr><td><code>diagnostics/mdb/</code>, <code>diagnostics/dbc/</code></td><td>scooter writes it</td><td><code>journal.log</code> and <code>dmesg.log</code> from each board, collected on entry</td></tr>
+            <tr><td><code>log-bundles/</code></td><td>scooter writes it</td><td>Bundles previously captured with <code>lsc</code>, copied out for you</td></tr>
+            <tr><td><code>ums_log.txt</code></td><td>scooter writes it</td><td>What happened during processing. Written on the way out and kept when the drive is wiped</td></tr>
+        </tbody>
+    </table>
+
+    <p><strong>Round-trip</strong> means the scooter exports its current file on entry and imports it on exit. Edit exported files in place, keeping unrelated values and credentials. If no file was exported because a feature has not been configured, you can create one at the exact path above. Use plain UTF-8 text, Unix (LF) line endings and the exact filename, without an extra <code>.txt</code> extension. Back up configurations securely: they can contain private keys or tokens.</p>
+
+    <h3>Map display tiles</h3>
+    <p>Copy any <code>.mbtiles</code> file into the <code>maps/</code> folder on the drive. The scooter installs it as the offline map source.</p>
+    <p>Download pre-built tiles from <a href="https://github.com/librescoot/osm-tiles/releases" target="_blank">Librescoot OSM Tiles releases</a>.</p>
+
+    <h3>Valhalla routing tiles</h3>
+    <p>Copy the downloaded archive into the <code>maps/</code> folder as-is. The scooter accepts any file name ending in <code>tiles.tar</code> or <code>tiles.tar.zst</code>, including release files such as <code>valhalla_tiles_&lt;region&gt;.tar.zst</code>. The compressed form reduces the download and USB transfer size and is unpacked automatically.</p>
+    <p>Download pre-built routing tiles from <a href="https://github.com/librescoot/valhalla-tiles/releases" target="_blank">Librescoot Valhalla Tiles releases</a>.</p>
+
+    <h3>Firmware updates</h3>
+    <p>Copy <code>.mender</code> or <code>.delta</code> artifacts into the <code>system-update/</code> folder to install a firmware update without a SIM card. This is the only thing that triggers a reboot; everything else is applied by restarting the affected service.</p>
+
+    <h3>Configuration</h3>
+    <p>Changing <code>settings.toml</code> or anything under <code>wireguard/</code> restarts <code>librescoot-settings</code>. Changing <code>radio-gaga/config.yaml</code> restarts <code>radio-gaga</code>, and <code>uplink-service/config.yaml</code> restarts <code>librescoot-uplink</code>. Nothing is restarted if the file came back unchanged.</p>
+
+    <h3>Configuration formats</h3>
+    <p><code>settings.toml</code> groups settings into TOML sections. For example:</p>
+    <pre class="code-block">[dashboard]
+language = "en"
+theme = "auto"</pre>
+    <p>Merge edits into the existing section without repeating its header, and keep the rest of the exported file: import replaces the on-disk TOML rather than merging a fragment. Invalid TOML is skipped. See the <a href="settings.html">Settings Reference</a> for supported keys and values.</p>
+    <p><code>wireguard/</code> accepts standard WireGuard INI files directly in the folder, one <code>.conf</code> per tunnel. The <a href="wireguard.html">WireGuard setup guide</a> explains the keys, addresses, server peer and connection checks. Deleting an exported <code>.conf</code> removes that tunnel; an empty folder removes all managed tunnels. Removing the folder itself leaves existing tunnels unchanged.</p>
+    <p>The two <code>config.yaml</code> files use YAML with space indentation. They belong to different services: radio-gaga uses <code>mqtt.broker_url</code>, while uplink-service uses <code>uplink.server_url</code>. Set <code>scooter.identifier</code> and <code>scooter.token</code> to the credentials for your backend. Preserve existing certificate fields and other sections; certificate paths refer to files on the scooter. Start new configurations from the <a href="https://github.com/rescoot/radio-gaga/blob/main/radio-gaga.example.yml">radio-gaga</a> or <a href="https://github.com/librescoot/uplink-service/blob/main/configs/uplink.example.yml">uplink-service example</a>, saving it under the exact USB path above. Check the service journal for configuration errors if it fails to start after import.</p>
+    <p><code>onboot.sh</code> installs <code>/data/onboot.sh</code> on the MDB for future boots, not immediate execution. It needs a shebang such as <code>#!/bin/sh</code> and valid shell syntax. UMS sets executable permissions. To disable it via USB, replace its contents with <code>#!/bin/sh</code> followed by <code>exit 0</code>. Missing settings, YAML or boot-script files leave installed versions unchanged.</p>
+    <p><code>diagnostics/*/*.log</code> files contain plain-text diagnostic output. Copy diagnostics and log bundles to your computer before leaving Update Mode; they are cleared after processing. Import results remain in <code>ums_log.txt</code>.</p>
+
+    <h3>Packages and scripts</h3>
+    <p>RPMs in <code>rpms/mdb/</code> and <code>rpms/dbc/</code> are installed on the matching board. Plain-text scripts named <code>mdb.sh</code> and <code>dbc.sh</code> under <code>scripts/</code> run once under Bash on that board. Start with <code>#!/bin/bash</code>, then your shell commands. Anything targeting the DBC is skipped if the DBC can't be reached.</p>
+
+    <div class="warning-box">
+        <h3>Scripts and RPMs run as root</h3>
+        <p>Review scripts and packages before importing them: they have full access to the board on which they run.</p>
+    </div>
+</section>
+
+<section class="docs-section">
+    <h2>How it works</h2>
+    <p>Update Mode is managed by <code>ums-service</code> on the MDB. It switches the USB port from network mode (USB Ethernet) to USB Mass Storage mode, exposing a partition on the scooter's eMMC as a removable drive.</p>
+    <p>When the drive is ejected, <code>ums-service</code> detects the eject event and works through the drive in a fixed order: settings, WireGuard, radio-gaga, uplink-service, <code>onboot.sh</code>, firmware updates, maps, RPMs, scripts. Each step is independent, so one failing doesn't stop the rest, and <code>ums_log.txt</code> records what each one did.</p>
+    <p>Afterwards the drive is wiped apart from <code>ums_log.txt</code>, so the next session starts clean. If a firmware artifact was queued, the scooter waits for the install to finish and then reboots.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Troubleshooting</h2>
+    <ul class="docs-list">
+        <li><strong>Drive doesn't appear:</strong> make sure the scooter is in Update Mode (check dashboard or run <code>lsc usb status</code>). Try a different USB cable.</li>
+        <li><strong>Files not applied after eject:</strong> check that you safely ejected (not just unplugged). The scooter needs the eject event to trigger processing.</li>
+        <li><strong>Scooter doesn't reboot:</strong> reconnect USB and eject again, or reboot manually with <code>lsc power reboot</code>.</li>
+    </ul>
+</section>
+
+<p class="docs-nav">
+    <a href="navigation.html">← Navigation Setup</a>
+    <a href="lsc.html">lsc CLI Reference →</a>
+</p>
+
+<section class="docs-section">
+    <h2>Regional map packs</h2>
+    <p>For several regions, use <code>maps/tiles_&lt;slug&gt;.mbtiles</code> and matching <code>maps/valhalla_tiles_&lt;slug&gt;.tar</code> or <code>.tar.zst</code>. Two or more named map files select regional installation. For a single pair, add an empty <code>maps/regional-packs</code> file. Without that marker, a single pair retains singleton installation behavior.</p>
+    <p>An active regional installation with a symlink at <code>/data/valhalla/tiles.tar</code> accepts single-pack updates without a marker. An existing regular <code>tiles.tar</code> is left untouched: preserve it under its matching region name and explicitly set up the symlink when migrating. With a recent GPS fix, the dashboard switches regions. Routes cannot cross region boundaries.</p>
+</section>

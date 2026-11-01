@@ -1,0 +1,65 @@
+---
+lang: de
+layout: docs
+permalink: /docs/1.4/features/scooter-alarm.html
+title: Roller-Alarmanlage
+description: Alarmanlage, Auslöser und Alarmreaktion des Rollers konfigurieren.
+redirect_from:
+  - /docs/features/scooter-alarm.html
+  - /docs/stable/features/scooter-alarm.html
+---
+<h1>Roller-Alarmanlage</h1>
+<p class="lead">Die Alarmanlage erkennt Bewegung und Manipulationsversuche am geparkten Roller. Die Bedienung beschreibt die <a href="/handbook/fahren.html">Fahren-Seite im Handbuch</a>.</p>
+
+<section class="docs-section">
+    <h2>Wie sie funktioniert</h2>
+    <p>Ist <strong>Bei Sperre aktivieren</strong> eingeschaltet, wird die Alarmanlage scharf, nachdem der Roller in den Standby gewechselt ist. Beim Aufsperren wird sie entschärft.</p>
+    <p><code>lsc alarm disarm</code> schaltet <code>alarm.enabled</code> aus, bis du die Alarmanlage wieder aktivierst. Für vorübergehendes Entschärfen nutzt du <code>lsc alarm silence</code> oder <strong>Entschärfen</strong> in <a href="../lsc.html#web-interface"><code>lsd</code></a>. Ab alarm-service v0.13.0 endet das nach erneuter Nutzung und anschließendem Abschließen, beim Beginn des Winterschlafs oder nach acht Stunden. Ein Neustart des Alarmdiensts beendet es ebenfalls.</p>
+    <p><strong>Stoppen</strong> in <code>lsd</code> beendet einen laufenden Alarm ohne die längere Entschärfung. Bleibt der Roller abgeschlossen, kann die Alarmanlage nach fünf Minuten Pause wieder scharf werden.</p>
+
+    <p>Eine scharfe Alarmanlage kann durch Folgendes ausgelöst werden:</p>
+    <ul class="docs-list">
+        <li><strong>Bewegung</strong> — standardmäßig aktiviert</li>
+        <li><strong>Tasten</strong> — Betätigung der linken oder rechten Bremse, der Hupe oder der Sitzbanktaste; als gemeinsame Gruppe standardmäßig aktiviert</li>
+        <li><strong>Sitzbank</strong> — Öffnen der Sitzbank ohne vorherige berechtigte Entriegelung</li>
+        <li><strong>Lenker</strong> — wenn das Lenkschloss auf „entriegelt“ wechselt oder der Lenker die Parkposition verlässt; optional und standardmäßig deaktiviert</li>
+    </ul>
+
+    <p>Um Fehlalarme beim Abstellen zu vermeiden, werden Lenkerauslöser in den ersten 90 Sekunden nach dem Scharfschalten ignoriert. Danach muss eine abweichende Lenkerposition eine Sekunde lang bestehen, bevor sie Alarm auslöst.</p>
+    <p>Zur Diagnose speichert die Alarmanlage den Auslöser und den Zeitpunkt des letzten Alarms.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Einstellungen am Dashboard</h2>
+    <p>Öffne <strong>Einstellungen</strong> → <strong>Fahrzeug</strong> → <strong>Alarm</strong>. Dort findest du:</p>
+    <ul class="docs-list">
+        <li><strong>Bei Sperre aktivieren</strong> — schaltet die Alarmanlage beim Wechsel in den Standby scharf</li>
+        <li><strong>Hupen bei Auslösung</strong> — verwendet bei einem Alarm die Hupe</li>
+        <li><strong>Dauer</strong> — 10, 20 oder 30 Sekunden</li>
+    </ul>
+    <p>Die Schalter für die einzelnen Auslöser sind erweiterte Einstellungen und erscheinen nicht als eigene Zeilen im Dashboard.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Fortgeschritten: Konfiguration über die CLI</h2>
+    <p>Nutze die Alarmsteuerung auf der Übersicht von <code>lsd</code> und die erweiterten Auslöserschalter auf dessen Einstellungsseite oder verwende <code>lsc</code>:</p>
+
+    <pre class="code-block">lsc alarm status       # Alarmstatus und Einstellungen anzeigen
+lsc alarm arm          # Alarm aktivieren; wird im Standby scharf
+lsc alarm disarm       # Alarm bis zur erneuten Aktivierung deaktivieren
+lsc alarm silence      # Vorübergehend entschärfen; alarm.enabled bleibt unverändert
+
+lsc settings set alarm.enabled true
+lsc settings set alarm.honk true
+lsc settings set alarm.duration 20</pre>
+
+    <p>Die erweiterten Auslöserschalter akzeptieren <code>true</code> oder <code>false</code>:</p>
+    <pre class="code-block">lsc settings set alarm.trigger.motion true
+lsc settings set alarm.trigger.motion false
+lsc settings set alarm.trigger.buttons true
+lsc settings set alarm.trigger.buttons false
+lsc settings set alarm.seatbox-trigger true
+lsc settings set alarm.seatbox-trigger false
+lsc settings set alarm.trigger.handlebar true
+lsc settings set alarm.trigger.handlebar false</pre>
+</section>

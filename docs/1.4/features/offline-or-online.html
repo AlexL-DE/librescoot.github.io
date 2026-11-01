@@ -1,0 +1,52 @@
+---
+lang: en
+layout: docs
+title: Works Fully Offline
+description: Librescoot works fully without a SIM card. Routine updates use Bluetooth; add a SIM for remote monitoring and automatic updates.
+redirect_from:
+  - /docs/features/offline-or-online.html
+  - /docs/stable/features/offline-or-online.html
+---
+<h1>Works Fully Offline</h1>
+<p class="lead">Ride and navigate offline. Reactivate or add a SIM for remote monitoring and automatic updates.</p>
+
+<section class="docs-section">
+    <h2>Fully offline</h2>
+    <p>Core features work without an internet connection:</p>
+
+    <ul class="docs-list">
+        <li><strong>Navigation</strong> with local map tiles and routing engine</li>
+        <li><strong>Alarm</strong> using the onboard acceleration sensor</li>
+        <li><strong>Firmware updates</strong> over Bluetooth from your phone or via Update Mode (USB Mass Storage)</li>
+        <li><strong>Dashboard</strong> with speedometer, battery, and all vehicle data</li>
+    </ul>
+
+</section>
+
+<section class="docs-section">
+    <h2>Online extras</h2>
+    <p>With a SIM card in the 4G modem, you can use:</p>
+
+    <ul class="docs-list">
+        <li><strong>Cloud access</strong>: see your scooter's status, position, and battery level from anywhere, and control it remotely. Works with the Librescoot uplink or third-party cloud services</li>
+        <li><strong>Over-the-air updates</strong> delivered automatically</li>
+        <li><strong>Online map tiles</strong> without downloading offline packages</li>
+        <li><strong>Remote routing</strong> via a Valhalla server</li>
+    </ul>
+
+    <p><a href="online-scooter.html">Bringing your scooter online →</a> — soldering the SIM holder, setting the APN, and configuring OTA updates.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Bluetooth updates (preferred)</h2>
+    <p><span class="release-pill" title="Available since Librescoot 1.2">1.2+</span> For a routine update within the same release channel, transfer the delta artifact from <strong>stasis for unu</strong> (<a href="https://play.google.com/store/apps/details?id=de.freal.unustasis&hl=en" target="_blank">Android on Google Play</a>, <a href="https://apps.apple.com/us/app/stasis-for-unu/id6497332566" target="_blank">iOS on the App Store</a>) over Bluetooth. This is the suggested path for most firmware updates.</p>
+    <p>Firmware for both MDB and DBC can be transferred. Use a <code>.delta</code> artifact matching the installed version when available; full <code>.mender</code> images take much longer.</p>
+    <p>After the transfer, the scooter prepares and installs the update. It waits until you lock it into <code>stand-by</code> before restarting to finish. It does not finalize the update while unlocked in <code>parked</code> or <code>ready-to-drive</code>.</p>
+    <p>The scooter must already run Librescoot 1.2 or newer. Getting to 1.2 for the first time still needs USB or a SIM.</p>
+</section>
+
+<section class="docs-section">
+    <h2>USB updates</h2>
+    <p>Use USB for maps and routing data, recovery, an offline channel change, or when no suitable Bluetooth delta is available. The scooter exposes a virtual drive in Update Mode. Copy files to the drive, eject it, and the scooter processes them automatically.</p>
+    <p><a href="/docs/1.4/ums.html">Update Mode file transfer guide →</a></p>
+</section>

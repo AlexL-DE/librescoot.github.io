@@ -1,0 +1,154 @@
+---
+lang: de
+layout: docs
+permalink: /docs/1.4/ums.html
+title: USB-Dateiübertragung (Updatemodus)
+description: Wie du Dateien per Updatemodus (USB-Mass-Storage) auf deinen Roller und zurück überträgst.
+redirect_from:
+  - /docs/ums.html
+  - /docs/stable/ums.html
+---
+<h1>USB-Dateiübertragung (Updatemodus)</h1>
+<p class="lead">Im Updatemodus erscheint ein virtuelles Laufwerk auf deinem Rechner (über USB-Mass-Storage). Dateien draufkopieren, Laufwerk auswerfen, den Rest macht der Roller automatisch.</p>
+<p>Für die Übertragung im Browser bei aktivem USB-Netzwerk nutzt du die Dateien-Seite von <a href="lsc.html#web-interface"><code>lsd</code></a>, für Firmware-Uploads dessen Update-Seite.</p>
+
+<section class="docs-section">
+    <h2 id="activate-ums-mode">Updatemodus aktivieren</h2>
+    <p>Zwei Wege:</p>
+
+    <h3>Am Dashboard</h3>
+    <ol class="docs-list">
+        <li>Doppelt auf die linke Bremse tippen, um das Menü zu öffnen</li>
+        <li><strong>Einstellungen</strong> → <strong>System</strong> → <strong>Update-Modus…</strong></li>
+    </ol>
+
+    <h3>Über die CLI</h3>
+    <pre class="code-block">lsc usb ums</pre>
+    <p>Zurück in den normalen (Netzwerk-)Modus:</p>
+    <pre class="code-block">lsc usb normal</pre>
+</section>
+
+<section class="docs-section">
+    <h2>Updatemodus verlassen</h2>
+    <p><strong>Linke Bremse 3 Sekunden halten.</strong> Auf dem Dashboard heißt die Geste <em>Abbrechen</em>, solange der Updatemodus noch vorbereitet wird, und <em>Beenden</em>, sobald das Laufwerk bereitsteht.</p>
+
+    <ul class="docs-list">
+        <li><strong>Während der Vorbereitung:</strong> der Wechsel wird abgebrochen, bevor das USB-Gadget umschaltet. Die Netzwerkverbindung bleibt bestehen.</li>
+        <li><strong>Im aktiven Updatemodus:</strong> der Roller schaltet den USB-Port zurück auf Netzwerk und verarbeitet dabei alles, was auf dem Laufwerk liegt, genau wie nach dem Auswerfen. Wirf das Laufwerk am Rechner also vorher aus, damit alle Dateien vollständig geschrieben sind.</li>
+    </ul>
+
+    <p>Andere Gesten beenden den Updatemodus nicht. Ein Druck auf die rechte Bremse oder ein Tippen auf die Sitzbank wird bewusst ignoriert, damit eine versehentliche Eingabe keine laufende Übertragung abbricht. <code>lsc usb normal</code> funktioniert weiterhin.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Dateien übertragen</h2>
+    <ol class="docs-list">
+        <li>Öffne den Fußraum mit einem PH2-Kreuzschlitz- oder H4-Inbusschlüssel, um an das MDB zu gelangen. Sein Mini-B-Anschluss ist normalerweise mit dem internen DBC-USB-Kabel belegt.</li>
+        <li>Löse die Sicherungsschraube des Kabels mit einem Schlitz- oder PH1-Schraubendreher und ziehe das interne DBC-USB-Kabel vom MDB ab.</li>
+        <li>Verbinde deinen Computer mit diesem Mini-B-Anschluss. Auf dem Computer erscheint ein Laufwerk.</li>
+        <li>Kopiere die Dateien in den passenden Ordner (siehe unten).</li>
+        <li>Wirf das Laufwerk sicher aus. Der Roller verarbeitet alles darauf und startet neu, wenn ein Firmware-Update dabei war.</li>
+        <li>Beende den Updatemodus, trenne den Computer und stecke das interne DBC-USB-Kabel wieder ein. Sichere es anschließend wieder mit der Schraube.</li>
+    </ol>
+
+    <div class="step-images">
+        <div>
+            <img src="/images/install/lsi-unu_scooter_footwell_open.jpg" alt="Geöffneter Fußraum des Rollers mit dem MDB an seinem Einbauort">
+            <p class="step-image-caption">Das MDB sitzt im geöffneten Fußraum.</p>
+        </div>
+        <div>
+            <img src="/images/install/lsi-mdb_usb_dbc.jpg" alt="Internes DBC-USB-Kabel vom Mini-B-Anschluss des MDB abgezogen">
+            <p class="step-image-caption">Ziehe das interne DBC-USB-Kabel ab, um den Mini-B-Anschluss freizugeben.</p>
+        </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 12px;">
+        <strong>Das Laufwerk ist auf 1 GB begrenzt</strong><br>
+        Größere Regionalpakete füllen es schon allein (z.B. die Anzeige-Kacheln der Niederlande mit ~540 MB oder die unkomprimierten Valhalla-Kacheln für Bayern mit ~725 MB), und Kombinationen aus <code>.mbtiles</code> + Routing-Kacheln passen oft nicht gleichzeitig drauf. Die komprimierten <code>.tar.zst</code>-Routing-Archive sind etwa ein Drittel so groß und lassen eine Kombination oft passen; wenn sie das Laufwerk trotzdem überschreitet, machst du es in zwei Sitzungen: erst die Anzeige-Kachel (<code>.mbtiles</code>) installieren, auswerfen und vom Roller übernehmen lassen, dann Updatemodus neu starten und die Routing-Kacheln drüberkopieren.
+    </div>
+</section>
+
+<section class="docs-section">
+    <h2>Was auf dem Laufwerk liegt</h2>
+    <p>Der Roller legt diese Ordner beim Start des Updatemodus an.</p>
+
+    <table class="services-table">
+        <thead><tr><th>Pfad</th><th>Richtung</th><th>Wofür</th></tr></thead>
+        <tbody>
+            <tr><td><code>system-update/</code></td><td>du füllst es</td><td>Firmware-Artefakte, <code>.mender</code> oder <code>.delta</code></td></tr>
+            <tr><td><code>maps/</code></td><td>du füllst es</td><td>Karten-Anzeige-Kacheln und Valhalla-Routing-Kacheln</td></tr>
+            <tr><td><code>rpms/mdb/</code>, <code>rpms/dbc/</code></td><td>du füllst es</td><td>RPM-Pakete, die auf dem jeweiligen Board installiert werden</td></tr>
+            <tr><td><code>scripts/mdb.sh</code>, <code>scripts/dbc.sh</code></td><td>du füllst es</td><td>Shell-Skripte, die einmalig auf dem jeweiligen Board laufen</td></tr>
+            <tr><td><code>settings.toml</code></td><td>Hin und zurück</td><td>Aktuelle Einstellungen, exportiert zum Bearbeiten und Zurücklesen</td></tr>
+            <tr><td><code>wireguard/</code></td><td>Hin und zurück</td><td>WireGuard-Konfigurationen, exportiert und zurückgelesen</td></tr>
+            <tr><td><code>radio-gaga/config.yaml</code></td><td>Hin und zurück</td><td>radio-gaga-Telemetriekonfiguration</td></tr>
+            <tr><td><code>uplink-service/config.yaml</code></td><td>Hin und zurück</td><td>uplink-service-Konfiguration</td></tr>
+            <tr><td><code>onboot.sh</code></td><td>Hin und zurück</td><td>Skript, das der Roller bei jedem Start ausführt</td></tr>
+            <tr><td><code>diagnostics/mdb/</code>, <code>diagnostics/dbc/</code></td><td>der Roller schreibt es</td><td><code>journal.log</code> und <code>dmesg.log</code> beider Boards, beim Aktivieren eingesammelt</td></tr>
+            <tr><td><code>log-bundles/</code></td><td>der Roller schreibt es</td><td>Zuvor mit <code>lsc</code> erstellte Log-Bundles, für dich herauskopiert</td></tr>
+            <tr><td><code>ums_log.txt</code></td><td>der Roller schreibt es</td><td>Was bei der Verarbeitung passiert ist. Wird beim Verlassen geschrieben und beim Leeren des Laufwerks behalten</td></tr>
+        </tbody>
+    </table>
+
+    <p><strong>Hin und zurück</strong> bedeutet: Der Roller exportiert seine aktuelle Datei beim Start und importiert sie beim Verlassen. Bearbeite exportierte Dateien direkt und erhalte andere Werte und Zugangsdaten. Fehlt eine Datei, weil die Funktion noch nicht eingerichtet ist, kannst du sie unter dem oben genannten Pfad anlegen. Verwende reinen UTF-8-Text, Unix-Zeilenenden (LF) und den genauen Dateinamen ohne zusätzliches <code>.txt</code>. Bewahre Sicherungen geschützt auf: Die Konfigurationen können private Schlüssel oder Tokens enthalten.</p>
+
+    <h3>Karten-Anzeige-Kacheln</h3>
+    <p>Kopiere eine beliebige <code>.mbtiles</code>-Datei in den Ordner <code>maps/</code> auf dem Laufwerk. Der Roller nutzt sie dann als Offline-Kartenquelle.</p>
+    <p>Vorgefertigte Kacheln findest du unter <a href="https://github.com/librescoot/osm-tiles/releases" target="_blank">Librescoot OSM Tiles Releases</a>.</p>
+
+    <h3>Valhalla-Routing-Kacheln</h3>
+    <p>Kopiere das heruntergeladene Archiv unverändert in den Ordner <code>maps/</code>. Der Roller akzeptiert jeden Dateinamen, der auf <code>tiles.tar</code> oder <code>tiles.tar.zst</code> endet, darunter Release-Dateien wie <code>valhalla_tiles_&lt;region&gt;.tar.zst</code>. Die komprimierte Form verkleinert den Download und die Übertragung per USB und wird automatisch entpackt.</p>
+    <p>Vorgefertigte Routing-Kacheln findest du unter <a href="https://github.com/librescoot/valhalla-tiles/releases" target="_blank">Librescoot Valhalla Tiles Releases</a>.</p>
+
+    <h3>Firmware-Updates</h3>
+    <p>Kopiere <code>.mender</code>- oder <code>.delta</code>-Artefakte in den Ordner <code>system-update/</code>, um ein Firmware-Update auch ohne SIM-Karte zu installieren. Nur das löst einen Neustart aus, alles andere wird durch einen Neustart des betroffenen Services übernommen.</p>
+
+    <h3>Konfiguration</h3>
+    <p>Änderst du <code>settings.toml</code> oder etwas unter <code>wireguard/</code>, startet <code>librescoot-settings</code> neu. Bei <code>radio-gaga/config.yaml</code> ist es <code>radio-gaga</code>, bei <code>uplink-service/config.yaml</code> der <code>librescoot-uplink</code>. Kommt eine Datei unverändert zurück, wird nichts neu gestartet.</p>
+
+    <h3>Konfigurationsformate</h3>
+    <p><code>settings.toml</code> gruppiert Einstellungen in TOML-Abschnitten. Zum Beispiel:</p>
+    <pre class="code-block">[dashboard]
+language = "en"
+theme = "auto"</pre>
+    <p>Ergänze den vorhandenen Abschnitt ohne doppelte Kopfzeile und behalte den Rest der exportierten Datei. Der Import ersetzt die TOML-Datei, statt einen Ausschnitt zusammenzuführen. Ungültiges TOML wird übersprungen. Erlaubte Schlüssel und Werte stehen in der <a href="settings.html">Einstellungsreferenz</a>.</p>
+    <p><code>wireguard/</code> akzeptiert normale WireGuard-INI-Dateien direkt im Ordner, eine <code>.conf</code> pro Tunnel. Die <a href="wireguard.html">WireGuard-Anleitung</a> erklärt Schlüssel, Adressen, Server-Peer und Verbindungstests. Das Löschen einer exportierten <code>.conf</code> entfernt den Tunnel; ein leerer Ordner entfernt alle verwalteten Tunnel. Fehlt der Ordner selbst, bleiben die Tunnel unverändert.</p>
+    <p>Die beiden Dateien <code>config.yaml</code> verwenden YAML mit Leerzeichen zur Einrückung. Sie gehören zu verschiedenen Diensten: radio-gaga nutzt <code>mqtt.broker_url</code>, uplink-service <code>uplink.server_url</code>. Trage unter <code>scooter.identifier</code> und <code>scooter.token</code> die Zugangsdaten für dein Backend ein. Behalte Zertifikatsfelder und andere Abschnitte; Zertifikatspfade bezeichnen Dateien auf dem Roller. Neue Konfigurationen kannst du vom <a href="https://github.com/rescoot/radio-gaga/blob/main/radio-gaga.example.yml">radio-gaga-Beispiel</a> oder <a href="https://github.com/librescoot/uplink-service/blob/main/configs/uplink.example.yml">uplink-service-Beispiel</a> ableiten und unter dem genauen USB-Pfad oben speichern. Prüfe bei Startproblemen nach dem Import das Dienstjournal auf Konfigurationsfehler.</p>
+    <p><code>onboot.sh</code> installiert <code>/data/onboot.sh</code> auf dem MDB für künftige Starts, nicht zur sofortigen Ausführung. Es braucht eine Shebang wie <code>#!/bin/sh</code> und gültige Shell-Syntax. UMS setzt die Ausführungsrechte. Zum Deaktivieren per USB ersetzt du den Inhalt durch <code>#!/bin/sh</code>, gefolgt von <code>exit 0</code>. Fehlende Einstellungs-, YAML- oder Bootskript-Dateien lassen installierte Fassungen unverändert.</p>
+    <p>Die Dateien unter <code>diagnostics/*/*.log</code> enthalten Diagnoseausgaben als Klartext. Kopiere Diagnosedateien und Logpakete vor dem Verlassen des Updatemodus auf deinen Computer; nach der Verarbeitung werden sie gelöscht. Importergebnisse bleiben in <code>ums_log.txt</code>.</p>
+
+    <h3>Pakete und Skripte</h3>
+    <p>RPMs aus <code>rpms/mdb/</code> und <code>rpms/dbc/</code> werden auf dem jeweiligen Board installiert. Reine Textskripte namens <code>mdb.sh</code> und <code>dbc.sh</code> unter <code>scripts/</code> laufen je einmal unter Bash auf diesem Board. Beginne mit <code>#!/bin/bash</code>, gefolgt von deinen Shell-Befehlen. Alles, was aufs DBC zielt, wird übersprungen, wenn das DBC nicht erreichbar ist.</p>
+
+    <div class="warning-box">
+        <h3>Skripte und RPMs laufen als root</h3>
+        <p>Prüfe Skripte und Pakete vor dem Import: Sie haben vollen Zugriff auf das Board, auf dem sie laufen.</p>
+    </div>
+</section>
+
+<section class="docs-section">
+    <h2>Wie es funktioniert</h2>
+    <p>Den Updatemodus verwaltet der <code>ums-service</code> auf dem MDB. Er schaltet den USB-Port vom Netzwerkmodus (USB-Ethernet) in den USB-Mass-Storage-Modus und stellt eine Partition des eMMC als Wechsellaufwerk bereit.</p>
+    <p>Sobald das Laufwerk ausgeworfen wird, erkennt <code>ums-service</code> das Eject-Event und arbeitet das Laufwerk in fester Reihenfolge ab: Einstellungen, WireGuard, radio-gaga, uplink-service, <code>onboot.sh</code>, Firmware-Updates, Karten, RPMs, Skripte. Jeder Schritt ist unabhängig, ein Fehler stoppt also die übrigen nicht, und <code>ums_log.txt</code> hält fest, was jeder Schritt getan hat.</p>
+    <p>Danach wird das Laufwerk bis auf <code>ums_log.txt</code> geleert, damit die nächste Sitzung sauber startet. Wurde ein Firmware-Artefakt eingereiht, wartet der Roller die Installation ab und startet dann neu.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Fehlersuche</h2>
+    <ul class="docs-list">
+        <li><strong>Laufwerk erscheint nicht:</strong> Prüf, ob der Roller wirklich im Updatemodus ist (am Dashboard oder per <code>lsc usb status</code>). Anderes USB-Kabel probieren.</li>
+        <li><strong>Dateien werden nach dem Auswerfen nicht angewendet:</strong> Prüf, ob du wirklich sicher ausgeworfen (nicht nur abgesteckt) hast. Nur das Eject-Event stößt die Verarbeitung an.</li>
+        <li><strong>Roller startet nicht neu:</strong> USB neu verbinden und erneut auswerfen, oder manuell neustarten mit <code>lsc power reboot</code>.</li>
+    </ul>
+</section>
+
+<p class="docs-nav">
+    <a href="navigation.html">← Navigation einrichten</a>
+    <a href="lsc.html">lsc-CLI-Referenz →</a>
+</p>
+
+<section class="docs-section">
+    <h2>Regionale Kartenpakete</h2>
+    <p>Für mehrere Regionen verwende <code>maps/tiles_&lt;slug&gt;.mbtiles</code> und passende <code>maps/valhalla_tiles_&lt;slug&gt;.tar</code> oder <code>.tar.zst</code>. Zwei oder mehr benannte Kartendateien wählen den regionalen Installationsmodus. Für ein einzelnes Paar lege zusätzlich die leere Datei <code>maps/regional-packs</code> an. Ohne diese Markierung bleibt ein einzelnes Paar mit der bisherigen Einzelregion-Installation kompatibel.</p>
+    <p>Bei einer regionalen Installation mit symbolischem Link <code>/data/valhalla/tiles.tar</code> lassen sich auch einzelne Pakete ohne Markierung aktualisieren. Eine vorhandene reguläre <code>tiles.tar</code> wird nicht ersetzt: Bewahre sie vor einer bewussten Umstellung unter dem passenden Regionsnamen auf und richte den symbolischen Link ein. Mit aktuellem GPS-Fix wechselt der Tacho die Region. Routen über Regionsgrenzen sind nicht unterstützt.</p>
+</section>

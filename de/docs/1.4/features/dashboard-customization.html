@@ -1,0 +1,48 @@
+---
+lang: de
+layout: docs
+permalink: /docs/1.4/features/dashboard-customization.html
+title: Dashboard anpassen
+description: Helles und dunkles Design, anpassbare Anzeigen und einstellbare Uhranzeige.
+redirect_from:
+  - /docs/features/dashboard-customization.html
+  - /docs/stable/features/dashboard-customization.html
+---
+<h1>Dashboard anpassen</h1>
+<p class="lead">Helles und dunkles Design, anpassbare Anzeigen und einstellbare Uhranzeige.</p>
+
+<section class="docs-section">
+    <h2>Display-Themes</h2>
+    <p>Wähle ein helles oder dunkles Design im Einstellungsmenü. Die Helligkeit passt sich dem Umgebungslicht an.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Konfigurierbare Elemente</h2>
+    <p>Was auf deinem Dashboard erscheint, bestimmst du:</p>
+
+    <ul class="docs-list">
+        <li><strong>Uhranzeige</strong>: Uhrzeit ein- oder ausblenden; GPS stellt sie bei Empfang automatisch</li>
+        <li><strong>Akkuanzeige</strong>: Prozent oder Reichweite</li>
+        <li><strong>Status-Icons</strong>: einzelne Indikatoren gezielt ein- oder ausschalten</li>
+        <li><strong>Kartendarstellung</strong>: Vektor- oder Raster-Kacheln</li>
+    </ul>
+    <p>Der Roller hat keine batteriegepufferte Echtzeituhr (RTC, Real-Time Clock), die im ausgeschalteten Zustand die Uhrzeit weiterführt. Das Dashboard stellt die Uhr bei GPS-Empfang, auch ohne Internetverbindung.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Meilensteine feiern</h2>
+    <p>Bei aktivierter Funktion markiert das Dashboard 10 km und danach jede 100-km-Marke. Beim Erreichen erscheint ein kurzer Hinweis; auf Wunsch folgen beim nächsten Parken Banner und Konfetti.</p>
+    <p>Unter <strong>Meilensteine</strong> in den Darstellungseinstellungen wählst du Aus, Regulär oder Regulär + Easter Eggs. <strong>Meilenstein-Darstellung</strong> bietet Kleiner Hinweis, Banner oder Banner + Konfetti. Meilensteine sind standardmäßig aus.</p>
+
+    <pre class="code-block">lsc settings set dashboard.milestones.mode all
+lsc settings set dashboard.milestones.presentation banner-and-confetti</pre>
+</section>
+
+<section class="docs-section">
+    <h2>Einstellungen</h2>
+    <p>Ändere die Dashboard-Einstellungen im Bildschirmmenü (zweimal kurz die linke Bremse ziehen), auf der Einstellungsseite von <a href="../lsc.html#web-interface"><code>lsd</code></a> oder mit <code>lsc</code>:</p>
+
+    <pre class="code-block">lsc settings list                          # Alle Einstellungen anzeigen
+lsc settings set dashboard.map.type offline  # Auf Offline-Karten umschalten
+lsc settings set dashboard.theme dark        # Dark-Theme</pre>
+</section>

@@ -23,11 +23,16 @@
 # of the current stable minor — it always points at whichever minor is the
 # is_stable: true one.
 
+- version: "1.4"
+  channel: stable
+  baseurl: ""
+  path_prefix: "/docs/1.4"
+  is_stable: true
+
 - version: "1.3"
   channel: stable
   baseurl: ""
   path_prefix: "/docs/1.3"
-  is_stable: true
 
 - version: "1.2"
   channel: stable

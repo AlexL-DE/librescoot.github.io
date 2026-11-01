@@ -1,0 +1,146 @@
+---
+lang: de
+layout: docs
+permalink: /docs/1.4/features/online-scooter.html
+title: Roller online bringen
+description: Eingebaute SIM über Sunshine reaktivieren oder Nano-SIM-Adapter mit eigenem Mobilfunktarif nutzen.
+redirect_from:
+  - /docs/features/online-scooter.html
+  - /docs/stable/features/online-scooter.html
+---
+<h1>Roller online bringen</h1>
+<p class="lead">Aktiviere die eingebaute SIM wieder oder rüste eine eigene für Online-Karten und OTA-Updates nach. Für Fernüberwachung und Fernsteuerung brauchst du eine Uplink-Verbindung.</p>
+
+<div class="info-box">
+    <h3 id="optional-nicht-zwingend">Offline-Funktionen</h3>
+    <p>Die Offline-Funktionen beschreibt <a href="offline-or-online.html">Funktioniert komplett offline</a>.</p>
+</div>
+
+<section class="docs-section">
+    <h2 id="1-sim-karte-einbauen">1. SIM reaktivieren oder ersetzen</h2>
+    <p>Auf dem MDB ist eine MFF2-SIM als Chip verlötet. Eine kompatible eingebaute SIM lässt sich über Sunshine reaktivieren. Alternativ ersetzt du sie durch einen Adapter für deine eigene SIM.</p>
+    <h3>Eingebaute SIM reaktivieren</h3>
+    <p><a href="https://sunshine.rescoot.org">Sunshine</a> ist der Mobilfunkanbieter für reaktivierte eingebaute SIMs. Melde dich an, füge deinen Roller hinzu und öffne die Verbindungseinrichtung. Dort lässt du die Kompatibilität prüfen und wählst einen kostenpflichtigen Tarif. Der vorhandene SIM-Chip bleibt eingebaut.</p>
+    <h3>Eigene Nano-SIM nutzen</h3>
+    <p>Der <a href="https://shop.librescoot.org/product/sim-adapter-zum-selbstloeten/">Nano-SIM-Adapter im Librescoot-Shop</a> ersetzt den MFF2-Chip und nimmt eine Nano-SIM (4FF) auf. Die <a href="https://shop.librescoot.org/wp-content/uploads/2026/05/Unu-SIM-Umbaubauanleitung.pdf">bebilderte Umbauanleitung</a> zeigt Chip und Lötpads. Der Ablauf:</p>
+
+    <ul class="docs-list">
+        <li>Fußraum öffnen, Hauptakkus herausnehmen, erst CB und dann AUX abklemmen und das MDB ausbauen. Die komplette Prozedur steht in der <a href="/docs/1.4/install-manual.html#safety">Installationsanleitung</a>.</li>
+        <li>MDB-Gehäuse öffnen (Torx T10) und den verlöteten MFF2-SIM-Chip suchen.</li>
+        <li>MFF2-Chip auslöten und den Nano-SIM-Adapter wie in der Umbauanleitung auf dessen Pads löten.</li>
+        <li>SIM einlegen, Gehäuse zu, MDB wieder einbauen, Akkus in umgekehrter Reihenfolge anschließen (erst AUX, dann CB, dann Hauptakkus).</li>
+    </ul>
+
+    <p>Verwende eine aktivierte Nano-SIM mit Datentarif deines Anbieters. Seit Librescoot 1.2 kann der Roller auch SMS senden und empfangen; wähle einen Tarif mit SMS, wenn du das nutzen möchtest.</p>
+    <p>Im geparkten Zustand zeigt das Dashboard unter „Messages“ den SMS-Posteingang. Gekoppelte Telefone mit passender App können ihn ebenfalls lesen. Nachrichten und Lesestatus werden geteilt; behandle gekoppelte Geräte entsprechend vertraulich. Der Posteingang speichert bis zu 100 Nachrichten für höchstens 30 Tage.</p>
+    <p>Die optionale Weiterleitung ist standardmäßig aus. Sie benötigt eine gültige internationale Mobilfunk- oder Festnetznummer und leitet nur neue Textnachrichten im Heimnetz weiter. Es gelten ein Tageslimit von zehn SMS-Segmenten und eine Wartedauer von höchstens 24 Stunden; Kosten können anfallen. Das Ziel wird über <code>sms.forward-to</code> gesetzt; das Dashboard kann eine aktive Weiterleitung ausschalten.</p>
+
+    <div class="warning-box">
+        <h3>Vor dem Öffnen des MDB alle Akkus abklemmen</h3>
+        <p>Hauptakkus herausnehmen, CB abklemmen, dann AUX. Beim Zusammenbau in umgekehrter Reihenfolge anschließen. Der Umbau erfordert Lötarbeiten an der Platine; ein beschädigtes MDB kann den Roller unbenutzbar machen.</p>
+    </div>
+</section>
+
+<section class="docs-section">
+    <h2>2. APN setzen</h2>
+    <p>Setze für deine eigene SIM den APN deines Anbieters auf der Einstellungsseite von <a href="../lsc.html#web-interface"><code>lsd</code></a> oder per SSH mit <code>lsc</code>. Folge bei einer reaktivierten eingebauten SIM der Verbindungseinrichtung von Sunshine.</p>
+
+    <pre class="code-block">lsc set cellular.apn internet</pre>
+
+    <p>Statt <code>internet</code> den APN deines Providers eintragen. In Deutschland gängig:</p>
+    <ul>
+        <li><code>internet</code> – Telefónica o2 (alle aktuellen Tarife), Telekom (inkl. Congstar-Laufzeitvertrag)</li>
+        <li><code>internet.telekom</code> – Congstar-Prepaid</li>
+        <li><code>web.vodafone.de</code> – Vodafone (inkl. CallYa-Prepaid)</li>
+    </ul>
+    <p>Steht meist in der Onboarding-Mail oder auf der Provider-Website.</p>
+
+    <h3>APN-Authentifizierung (Congstar-Prepaid, einige MVNOs)</h3>
+    <p>Die meisten deutschen Provider brauchen keine APN-Authentifizierung. Ein paar schon – z. B. Congstar-Prepaid mit Benutzername <code>congstar</code> / Passwort <code>cs</code> und PAP:</p>
+
+    <pre class="code-block">lsc set \
+  cellular.apn internet.telekom \
+  cellular.username congstar \
+  cellular.password cs \
+  cellular.auth pap</pre>
+
+    <p><code>cellular.auth</code> akzeptiert <code>none</code> (Default), <code>pap</code> oder <code>chap</code>. Falls unbekannt: <code>pap</code> zuerst probieren – das ist mit Abstand am häufigsten.</p>
+
+    <h3>Wie die Änderung greift</h3>
+    <p><code>modem-service</code> vergleicht diese Settings mit dem NetworkManager-GSM-Profil und dem tatsächlichen LTE-Attach-Kontext (CID1). Vor einer Änderung trennt der Dienst die Verbindung und meldet das Modem vom Netz ab. Danach schreibt und prüft er die Einstellungen, verbindet sich erneut und prüft CID1 nochmals. Dabei wird die Mobilfunkverbindung einschließlich SSH kurz unterbrochen. Das Ergebnis lässt sich hier abfragen:</p>
+    <pre class="code-block">redis-cli HGET modem apn-action</pre>
+    <p>Mögliche Werte sind <code>applied</code> (Änderung geprüft und Verbindung wiederhergestellt), <code>ok</code> (bereits korrekt), <code>unconfigured</code> (Provider-Standardwerte), <code>iccid-changed-cleared</code> (SIM-Wechsel erkannt, siehe unten) oder <code>error</code>. Bei Fehlern versucht der Dienst, die vorherige Konfiguration wiederherzustellen. Es gibt höchstens drei Änderungsversuche mit Wartezeiten dazwischen; korrigiere die Einstellungen vor einem erneuten Versuch. Eine sekundäre PIN2-/PUK2-Meldung blockiert den APN-Abgleich nicht.</p>
+
+    <h3>SIM-Wechsel</h3>
+    <p>Ändert sich die ICCID der SIM bei laufendem Roller, löscht <code>modem-service</code> den APN in NetworkManager und Modem. Setze <code>cellular.apn</code> und gegebenenfalls die Zugangsdaten mit <code>lsc set</code> für die neue SIM, um den Abgleich fortzusetzen.</p>
+</section>
+
+<section class="docs-section">
+    <h2>3. SIM-PIN setzen (falls nötig)</h2>
+    <p>Hat die SIM eine PIN-Sperre, die PIN hinterlegen, damit das Modem die Karte beim Boot entsperren kann:</p>
+
+    <pre class="code-block">lsc set cellular.sim-pin 1234</pre>
+
+    <p>Schritt überspringen, wenn deine SIM keine PIN-Sperre hat. Ein leerer Wert lässt die SIM, wie sie ist. Die PIN wird im lokalen Redis-Settings-Hash gespeichert.</p>
+
+    <p>Modem-Status prüfen mit:</p>
+    <pre class="code-block">lsc status</pre>
+</section>
+
+<section class="docs-section">
+    <p>Wenn Sunshine über radio-gaga Logs mit einem Zeitraum wie <code>1h</code> anfordert, enthält das Paket auch verfügbare frühe Einträge des aktuellen Starts, sofern seine Laufzeit in diesen Zeitraum fällt. Ältere Starts verwenden den angeforderten Uhrzeitfilter. Die Sammlung weckt das Dashboard nicht; Log-Pakete können sensible Daten enthalten.</p>
+
+    <h2>4. OTA-Updates konfigurieren</h2>
+    <p>Sobald der Roller online ist, stellst du die Updates am Display ein, unter <strong>Menü → Einstellungen → System → Updates</strong>: Prüfintervall, Update-Art (Delta oder Full – Delta ist der Default und bei einem Volumentarif die richtige Wahl) und Release-Kanal (stable, testing, nightly). Der Eintrag <strong>Jetzt prüfen</strong> sucht sofort nach Updates. Einmal eingerichtet laufen die Updates automatisch im Hintergrund, sobald eine Verbindung besteht.</p>
+    <p>Release-Kanäle, Update-Fortschritt und Wiederherstellung beschreibt die <a href="/handbook/updates.html">Updates-Seite im Handbuch</a>. Das Display schreibt Kanal, Methode und Prüfintervall für beide Boards. <strong>Jetzt prüfen</strong> schiebt <code>check-now</code> auf <code>scooter:update:mdb</code> und <code>scooter:update:dbc</code>. Die Befehle unten bieten dieselben Funktionen per SSH.</p>
+
+    <p>Die Update-Seite in <code>lsd</code> bietet Kanalauswahl, Update-Prüfung und Installationsfortschritt für beide Boards. Die Befehle unten sind die SSH-Alternative.</p>
+    <h3>Channel</h3>
+    <p><code>stable</code> für Produktion, <code>testing</code> für frühen Zugriff, <code>nightly</code> für Entwicklungs-Builds. Mit dem Shortcut beide auf einmal setzen:</p>
+    <pre class="code-block">lsc ota channel stable</pre>
+
+    <h3>Methode</h3>
+    <p><code>delta</code> lädt geänderte Blöcke und ist die Vorgabe. Nutze es bei Volumentarifen. <code>full</code> lädt das komplette Image.</p>
+    <pre class="code-block">lsc set updates.mdb.method delta updates.dbc.method delta</pre>
+
+    <h3>Check-Intervall</h3>
+    <p>Wie oft der Roller nach neuen Releases fragt. Go-Duration-String – <code>24h</code> für täglich, <code>6h</code> für den Default, <code>0</code> deaktiviert die automatischen Checks. Achtung: <code>1d</code> ist kein gültiges Go-Duration-Format, also <code>24h</code> nehmen.</p>
+    <pre class="code-block">lsc set updates.mdb.check-interval 24h updates.dbc.check-interval 24h</pre>
+
+    <h3>MDB orchestriert DBC</h3>
+    <p>Das DBC (Dashboard) ist die meiste Zeit aus, kann also selbst nicht nach Updates schauen. Mit Orchestrierung an schaltet das MDB das DBC ein, sobald ein neueres DBC-Release verfügbar ist, und stößt dort einen Update-Check an.</p>
+    <pre class="code-block">lsc set updates.mdb.orchestrate-dbc true</pre>
+
+    <h3>Empfohlene Defaults</h3>
+    <p>Für die meisten Fahrer*innen:</p>
+    <pre class="code-block">lsc ota channel stable
+lsc set \
+  updates.mdb.method delta \
+  updates.dbc.method delta \
+  updates.mdb.check-interval 24h \
+  updates.dbc.check-interval 24h \
+  updates.mdb.orchestrate-dbc true</pre>
+</section>
+
+<section class="docs-section">
+    <h2>5. Funktioniert's?</h2>
+    <p>Wähle <strong>Jetzt prüfen</strong> unter <strong>Menü → Einstellungen → System → Updates</strong>. Aus der Shell prüfst du Modem- und OTA-Status mit:</p>
+    <pre class="code-block">lsc status        # Mobilfunk-Registrierung, Signal, IP
+lsc ota status    # aktuelle OTA-Konfiguration und letzter Check
+lsc ota check     # jetzt nach Updates suchen</pre>
+
+    <p>Wenn <code>lsc ota check</code> den aktuellen Channel und einen Last-Check-Zeitstempel meldet, redet der Roller mit dem Release-Server.</p>
+</section>
+
+<section class="docs-section">
+    <h2>Cloud-Uplink (optional)</h2>
+    <p>Für Status, Position und Akkustand auf dem Handy oder im Browser meldest du den Roller bei einer Cloud an:</p>
+    <ul class="docs-list">
+        <li><a href="https://sunshine.rescoot.org">Sunshine Cloud</a>: Die Cloud-Nutzung ist kostenlos. Die Mobilfunkverbindung über eine reaktivierte eingebaute SIM ist ein separater kostenpflichtiger Dienst.</li>
+        <li>Selbst hosten mit <a href="https://github.com/librescoot/uplink-server">uplink-server</a>.</li>
+    </ul>
+</section>
+
+<p class="docs-nav">
+    <a href="offline-or-online.html">← Funktioniert komplett offline</a>
+</p>
