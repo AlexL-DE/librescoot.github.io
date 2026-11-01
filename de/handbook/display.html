@@ -83,7 +83,7 @@ description: "Alle Bereiche und Symbole des Cluster-Bildschirms erklärt: Status
     <h2>Statistik-Zeile unten</h2>
     <p>Die unterste Zeile auf dem Display zeigt vier Werte zur aktuellen Fahrt:</p>
     <ul class="docs-list">
-        <li><strong>DAUER</strong>: Die gezählte Fahrtdauer, im Format MM:SS oder H:MM.</li>
+        <li><strong>DAUER</strong>: Die Zeit in Fahrbereitschaft, einschließlich Stopps, im Format MM:SS oder H:MM.</li>
         <li><strong>Ø TEMPO</strong>: Die Durchschnittsgeschwindigkeit des Fahrtenzählers.</li>
         <li><strong>STRECKE</strong>: Die gezählten Kilometer.</li>
         <li><strong>GESAMT</strong>: Der Gesamt-Kilometerstand des Rollers.</li>
@@ -106,7 +106,7 @@ description: "Alle Bereiche und Symbole des Cluster-Bildschirms erklärt: Status
 
 <section class="docs-section">
     <h2>Fahrtenverlauf</h2>
-    <p>Wähle unter <strong>Fahrtenverlauf</strong> im Hauptmenü eine abgeschlossene Fahrt aus. Die Detailansicht zeigt Strecke, Zeit in Fahrbereitschaft, Durchschnittsgeschwindigkeit und, falls verfügbar, die GPS-Höchstgeschwindigkeit über einer großen 2D-Karte der aufgezeichneten Spur. Ohne gespeicherte Punkte erscheint "Keine GPS-Spur"; ältere Fahrten haben nicht immer Punkte. Halte die linke Bremse, um zur Liste zurückzukehren.</p>
+    <p>Wähle unter <strong>Fahrtenverlauf</strong> im Hauptmenü eine abgeschlossene Fahrt aus. Die Detailansicht zeigt Strecke, Zeit in Fahrbereitschaft, Durchschnittsgeschwindigkeit und, falls verfügbar, die GPS-Höchstgeschwindigkeit über einer großen 2D-Karte der aufgezeichneten Spur. Ohne gespeicherte Punkte erscheint "Keine GPS-Spur"; ältere Fahrten haben nicht immer Punkte, und aufgezeichnete Spuren können Lücken enthalten. Halte die linke Bremse, um zur Liste zurückzukehren.</p>
     <p>Unter <span class="menu-path">Menü → Einstellungen → Fahrzeug → Fahrtenzähler → Fahrtenverlauf → Aufbewahrung</span> legst du die Aufbewahrung nach Alter, Anzahl oder Größe fest oder schaltest die Bereinigung mit Nie aus. Nur Fahrten ab 100 m werden im Verlauf aufgezeichnet.</p>
 </section>
 
@@ -150,6 +150,12 @@ description: "Alle Bereiche und Symbole des Cluster-Bildschirms erklärt: Status
 </section>
 
 <section class="docs-section">
+    <h2>SMS</h2>
+    <p>Öffne im Parkmodus <span class="menu-path">Menü → Info → SMS</span> und wähle eine Nachricht zum Lesen aus. Ziehe die linke Bremse kurz zum Herunterscrollen, halte die rechte zum Hochscrollen und die linke zum Zurückgehen. Ein kurzer Zug an der rechten Bremse öffnet die Löschbestätigung; zuerst ist Abbrechen ausgewählt.</p>
+    <p>Um neue Nachrichten im Heimatnetz weiterzuleiten, öffne die <a href="erweiterte-einstellungen.html">Einstellungen der Web-Oberfläche</a>, aktiviere den erweiterten Modus und suche nach SMS, um die Zielnummer einzutragen. Am Tacho kannst du das Ziel ansehen und die Weiterleitung ausschalten. Sie ist standardmäßig aus und kann Tarifkosten verursachen.</p>
+</section>
+
+<section class="docs-section">
     <h2 id="shortcut-menu">Schnellmenü im Fahrmodus</h2>
     <p>Im Fahrmodus bedienst du das Schnellmenü mit dem Sitzbank-Schalter am Lenker.</p>
     <p>Der Ablauf:</p>
@@ -158,13 +164,13 @@ description: "Alle Bereiche und Symbole des Cluster-Bildschirms erklärt: Status
         <li>Sobald der gewünschte Eintrag hervorgehoben ist, lass den Schalter los. Die Auswahl bleibt für drei Sekunden markiert.</li>
         <li>In diesen drei Sekunden noch einmal kurz auf den Sitzbank-Schalter drücken, um die Aktion auszuführen. Drückst du nicht rechtzeitig, schließt sich das Menü ohne Aktion.</li>
     </ol>
-    <p>Im Schnellmenü stehen folgende Einträge:</p>
+    <p>Je nach Konfiguration kann das Schnellmenü diese Einträge enthalten:</p>
     <ul class="docs-list">
-        <li><strong>Warnblinker</strong>: Warnblinker ein- oder ausschalten.</li>
         <li><strong>Ansicht</strong>: zwischen Tacho-Ansicht und Karten-Ansicht umschalten.</li>
         <li><strong>Design</strong>: zwischen dunkler, heller und automatischer Ansicht durchwechseln.</li>
         <li><strong>Debug</strong>: blendet ein Diagnose-Overlay ein.</li>
     </ul>
+    <p>Einträge und Reihenfolge stellst du in den <a href="erweiterte-einstellungen.html">Einstellungen der Web-Oberfläche</a> ein: Aktiviere den erweiterten Modus und suche nach <strong>Shortcut Menu Items</strong>. Für gespeicherte Ziele nutze <span class="menu-path">Menü → Einstellungen → Karte &amp; Navigation → Schnellnavigation</span>.</p>
     <p>Doppeltes kurzes Tippen auf den Sitzbank-Schalter schaltet außerdem direkt die Warnblinker ein oder aus, ohne den Umweg über das Menü. Das Schnellmenü selbst reagiert nur im Fahrmodus; sobald du in den Parkmodus zurückkehrst, schließt es sich automatisch.</p>
 </section>
 
@@ -195,6 +201,6 @@ description: "Alle Bereiche und Symbole des Cluster-Bildschirms erklärt: Status
 </section>
 
 <section class="docs-section">
-    <h2>Töne und Meldungen (Vorschau auf 1.4)</h2>
+    <h2>Töne und Meldungen</h2>
     <p>Mit angeschlossenem Verstärker (bei den meisten Rollern nicht angeschlossen) spielt der Tacho Töne für Blinker, Sitzbank, Fahrzeugzustände, Akkus, Navigation und Meldungen; auch die Startanimation hat einen Ton. Gleich wichtige Meldungen wechseln sich alle fünf Sekunden ab. Lange Texte scrollen. Warnungen betreffen unter anderem niedrigen Akkustand, Ladeprobleme und Bluetooth-Fehler.</p>
 </section>

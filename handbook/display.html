@@ -82,7 +82,7 @@ description: "Every area and icon of the cluster screen explained: status bar, s
     <h2>Stats row at the bottom</h2>
     <p>The bottom row of the display shows four values for the current ride:</p>
     <ul class="docs-list">
-        <li><strong>DURATION</strong>: how long you've been riding this session, in MM:SS or H:MM format.</li>
+        <li><strong>DURATION</strong>: time spent ready to drive, including stops, in MM:SS or H:MM format.</li>
         <li><strong>Ø SPEED</strong>: the average speed for this ride.</li>
         <li><strong>TRIP</strong>: the counted kilometers.</li>
         <li><strong>TOTAL</strong>: the scooter's total odometer reading.</li>
@@ -105,7 +105,7 @@ description: "Every area and icon of the cluster screen explained: status bar, s
 
 <section class="docs-section">
     <h2>Trip history</h2>
-    <p>Select a completed ride from <strong>Trip history</strong> in the root menu. The detail view shows distance, time spent ready to drive, average speed and, when available, GPS maximum speed above a large 2D map of the recorded trace. Rides without stored points show "No GPS trace"; older rides may not have points. Hold the left brake to return to the list.</p>
+    <p>Select a completed ride from <strong>Trip history</strong> in the root menu. The detail view shows distance, time spent ready to drive, average speed and, when available, GPS maximum speed above a large 2D map of the recorded trace. Rides without stored points show "No GPS trace"; older rides may not have points, and recorded traces can contain gaps. Hold the left brake to return to the list.</p>
     <p>Under <span class="menu-path">Menu → Settings → Vehicle → Trip counter → Trip history → Retention</span>, choose retention by age, count or size, or Never to disable cleanup. Only rides of at least 100 m are recorded in history.</p>
 </section>
 
@@ -142,6 +142,12 @@ description: "Every area and icon of the cluster screen explained: status bar, s
 </section>
 
 <section class="docs-section">
+    <h2>SMS</h2>
+    <p>While parked, open <span class="menu-path">Menu → Info → SMS</span> and select a message to read it. Tap the left brake to scroll down, hold the right brake to scroll up, and hold the left brake to return. Tap the right brake to open the delete confirmation; Cancel is selected first.</p>
+    <p>To forward new messages on the home network, open <a href="advanced-settings.html">Settings in the web interface</a>, enable advanced mode and search for SMS to set the destination number. The dashboard shows the destination and can turn forwarding off. Forwarding is off by default and carrier charges may apply.</p>
+</section>
+
+<section class="docs-section">
     <h2 id="shortcut-menu">Shortcut menu while riding</h2>
     <p>In drive mode, operate the shortcut menu with the seatbox switch on the handlebar.</p>
     <p>How it works:</p>
@@ -150,13 +156,13 @@ description: "Every area and icon of the cluster screen explained: status bar, s
         <li>Once the entry you want is highlighted, release the switch. Your selection stays marked for three seconds.</li>
         <li>Within those three seconds, briefly press the seatbox switch again to run the action. If you don't press in time, the menu closes without doing anything.</li>
     </ol>
-    <p>The shortcut menu has these entries:</p>
+    <p>Depending on its configuration, the shortcut menu can include:</p>
     <ul class="docs-list">
-        <li><strong>Hazard lights</strong>: turn the hazard lights on or off.</li>
         <li><strong>View</strong>: switch between speedometer view and map view.</li>
         <li><strong>Theme</strong>: cycle between dark, light, and automatic view.</li>
         <li><strong>Debug</strong>: shows a diagnostic overlay.</li>
     </ul>
+    <p>Choose actions and their order in the <a href="advanced-settings.html">web interface settings</a>: enable advanced mode and search for <strong>Shortcut Menu Items</strong>. For saved destinations, use <span class="menu-path">Menu → Settings → Map &amp; Navigation → Quick nav</span>.</p>
     <p>A double short tap on the seatbox switch also toggles the hazard lights directly, without going through the menu. The shortcut menu itself only responds in drive mode; as soon as you're back in park mode, it closes automatically.</p>
 </section>
 
@@ -187,6 +193,6 @@ description: "Every area and icon of the cluster screen explained: status bar, s
 </section>
 
 <section class="docs-section">
-    <h2>Sound cues and notifications (1.4 preview)</h2>
+    <h2>Sound cues and notifications</h2>
     <p>With a connected amplifier (disconnected on most scooters), the dashboard plays cues for indicators, seatbox, vehicle states, batteries, navigation and notifications; the boot animation has a sound too. Same-priority notifications cycle every five seconds and long text scrolls. Warnings include low charge, charging problems and Bluetooth faults.</p>
 </section>

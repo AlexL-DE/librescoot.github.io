@@ -71,7 +71,7 @@ description: How to keep Librescoot up to date. Routine delta updates are best t
         <li><strong>Nightly</strong> builds the current development state every day. Expect serious problems here, and be ready to recover manually if needed.</li>
     </ul>
     <p>You can tell which channel you're currently running from the version number in the version box. Online, switch with <span class="menu-path">Menu → Settings → System → Updates → Switch Release Channel</span> or the <a href="/docs/lsc.html"><code>lsc</code> CLI tool</a>. A channel switch pulls a full image, so give it time and a decent connection.</p>
-    <p>Development builds also offer channel selection, file uploads and progress on the Updates page in <a href="/en/docs/dev/lsc.html#web-interface"><code>lsd</code></a>, the scooter's browser interface.</p>
+    <p>Librescoot 1.4 also offers channel selection, file uploads and progress on the Updates page in <a href="/en/docs/dev/lsc.html#web-interface"><code>lsd</code></a>, the scooter's browser interface.</p>
     <p>Offline, download an artifact from the channel you want and install it through <a href="/docs/ums.html">Update Mode</a>. If no explicit channel override is configured, the updater infers the future channel from the installed release.</p>
 </section>
 
@@ -100,6 +100,6 @@ description: How to keep Librescoot up to date. Routine delta updates are best t
 </section>
 
 <section class="docs-section">
-    <h2>Update behavior in 1.4 (preview)</h2>
+    <h2>Update behavior in 1.4</h2>
     <p>The update preview shows the planned download size for both boards. Failed delta application can fall back to a full image. A USB Update Mode cycle finishes without rebooting when there is nothing to install. Update checks have a status separate from installation. The dashboard announces download, installation and errors. DBC update activation waits for standby, not just parked.</p>
 </section>
