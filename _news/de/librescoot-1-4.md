@@ -7,6 +7,7 @@ published: true
 summary: "Mehrstopp-Routen mit Übersicht und Fortsetzung nach einer Pause, eine Uhr, die durch die Hibernation weiterläuft, und ein vielseitigerer Tacho. Dazu kommen Android-Smartphone-Schlüssel mit Librescoot Mobile und ein Fahrtenbuch."
 icon: map
 image: /images/news/librescoot-1-4.png
+image_in_post: false
 image_alt: "Librescoot-Schriftzug, v1.4.0 und der Codename Spätsommer neben einer Sonne"
 ---
 

@@ -7,6 +7,7 @@ published: true
 summary: "Multi-stop routes with an overview and the option to resume after a break, a clock that keeps running through Hibernation, and a more versatile dashboard. Android phone keys with Librescoot Mobile and a trip log add to the everyday improvements."
 icon: map
 image: /images/news/librescoot-1-4.png
+image_in_post: false
 image_alt: "Librescoot wordmark, v1.4.0 and the codename Spätsommer beside a sun"
 ---
 
