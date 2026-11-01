@@ -6,7 +6,7 @@
     <button class="news-screenshot-button" type="button"
             data-full-src="{{ include.src | escape }}"
             data-alt="{{ include.alt | escape }}"
-            data-caption="{{ screenshot_caption | escape }}"
+            data-caption="{{ screenshot_caption | strip_html | escape }}"
             aria-label="{{ screenshot_t.enlarge | escape }}: {{ include.alt | escape }}">
         <img src="{{ include.src }}" alt="{{ include.alt | escape }}" loading="{{ screenshot_loading }}" decoding="async">
     </button>

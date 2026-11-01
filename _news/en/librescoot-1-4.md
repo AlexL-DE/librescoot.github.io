@@ -22,6 +22,8 @@ Frequent destinations such as home or work, the route overview and the option to
 
 Several offline map regions can be stored on the scooter at once. After a one-time setup, the dashboard selects the appropriate region for the current position. Installation and updates use USB; routes cannot cross between separate regions. Map information labels are translated into German and English, and long values wrap.
 
+{% include news-screenshot.html src="/images/news/librescoot-1-4-route-en.png" alt="Navigation map with three stops in central Berlin" caption='Route overview with three stops and example data. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.' %}
+
 ## The clock keeps running
 
 After waking from Hibernation, the clock shows the correct time without waiting for GPS. It keeps running while the scooter sleeps. After a complete loss of power, including the internal batteries, it needs to synchronize again, for example through GPS or the internet.
@@ -49,6 +51,8 @@ An optional setting can open the seatbox automatically when the scooter is unloc
 ## Trip log and energy overview
 
 The trip log saves distance, duration and GPS tracks on the scooter. Under Trip history, you can view completed rides with distance, riding time and average speed directly on the dashboard. Recorded GPS tracks can be shown on the map. Retention can be limited by age, number of trips or storage size, or automatic deletion can be turned off. Short distances below 100 metres on the odometer are not saved as completed trips.
+
+{% include news-screenshot.html src="/images/news/librescoot-1-4-trip-en.png" alt="Trip details with example values and a GPS track on the map" caption='Trip details with example data and a GPS track following public streets. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.' %}
 
 The trip counter also keeps its distance when the scooter is switched off and counts independently of trip history. Choose whether it resets after each ride, daily, on a battery swap or only manually.
 

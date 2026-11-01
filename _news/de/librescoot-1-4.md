@@ -22,6 +22,8 @@ Häufige Ziele wie Zuhause oder Arbeit, die Routenübersicht und das Überspring
 
 Mehrere Offline-Kartenregionen können gleichzeitig auf dem Roller liegen. Nach einmaliger Einrichtung wählt der Tacho anhand der Position die passende Region. Installation und Aktualisierung erfolgen per USB; Routen über die Grenzen getrennter Regionen sind nicht möglich. Die Karteninformationen sind auf Deutsch und Englisch übersetzt und brechen lange Werte um.
 
+{% include news-screenshot.html src="/images/news/librescoot-1-4-route-de.png" alt="Navigationskarte mit drei Zwischenstopps in der Berliner Innenstadt" caption='Routenübersicht mit drei Zwischenstopps und Beispieldaten. Kartendaten © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>.' %}
+
 ## Die Uhr läuft weiter
 
 Nach dem Aufwachen aus der Hibernation stimmt die Uhrzeit, ohne erst auf GPS zu warten. Die Uhr läuft während des Schlafens weiter. Nach vollständigem Stromverlust, einschließlich der internen Akkus, muss sie neu synchronisiert werden, zum Beispiel über GPS oder Internet.
@@ -49,6 +51,8 @@ Auf Wunsch öffnet sich die Sitzbank beim Entsperren automatisch, auch mit einer
 ## Fahrtenbuch und Verbrauchsübersicht
 
 Das Fahrtenbuch speichert Strecke, Dauer und GPS-Verlauf auf dem Roller. Unter Fahrtenverlauf lassen sich abgeschlossene Fahrten mit Strecke, Fahrzeit und Durchschnittsgeschwindigkeit direkt am Tacho ansehen. Aufgezeichnete GPS-Spuren können auf der Karte angezeigt werden. Die Aufbewahrung lässt sich nach Alter, Fahrtenzahl oder Speichergröße begrenzen; die automatische Löschung kann auch ausgeschaltet werden. Kurze Strecken unter 100 Metern laut Kilometerzähler werden nicht als abgeschlossene Fahrt gespeichert.
+
+{% include news-screenshot.html src="/images/news/librescoot-1-4-trip-de.png" alt="Fahrtdetails mit Beispielwerten und GPS-Spur auf der Karte" caption='Fahrtdetails mit Beispieldaten und einer GPS-Spur entlang öffentlicher Straßen. Kartendaten © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>.' %}
 
 Auch der Tageskilometerzähler bleibt beim Ausschalten erhalten und zählt unabhängig vom Fahrtenbuch. Das Zurücksetzen ist konfigurierbar: nach jeder Fahrt, täglich, beim Akkuwechsel oder nur von Hand.
 
