@@ -1,32 +1,87 @@
 ---
 lang: en
-title: 'Librescoot 1.4.0 “Spätsommer”'
-date: 2026-10-12
+title: 'Librescoot 1.4.0 "Spätsommer"'
 permalink: /news/librescoot-1-4/
-published: false
-summary: A web interface, multi-stop routes, regional offline maps and coordinated hibernation.
+date: 2026-11-01
+published: true
+summary: "Multi-stop routes with an overview and the option to resume after a break, a clock that keeps running through Hibernation, and a more versatile dashboard. Android phone keys with Librescoot Mobile and a trip log add to the everyday improvements."
 icon: map
 ---
 
-Librescoot 1.4.0 “Spätsommer” brings scooter management to the browser and adds multi-stop navigation and regional offline maps. This post is a publication draft; no stable image has been published yet.
+Librescoot 1.4.0 "Spätsommer" expands navigation with multi-stop routes, an overview of the whole tour and the option to resume after a break. The clock keeps running through Hibernation, the shortcut menu gains more options, and the dashboard gets unified notifications, customizable colors and smooth transitions. With the Librescoot Mobile app, an Android phone can also serve as a key, while a trip log records your rides.
 
-## Manage it in the browser
+## Routes for the whole tour
 
-The [lsd web interface](/handbook/lsd.html) runs directly on the scooter. Over USB, manage settings, keycards, navigation destinations, files, updates and log bundles. Sunshine remains optional. To set it up, generate an installer credential in Sunshine Account settings and paste its token or online installer link into the Cloud page.
+A route can include several stops. Add destinations along the way, change their order or skip individual stops. The route overview shows the remaining route and upcoming destinations. After standby or a restart, the tour can be resumed without entering everything again.
 
-## Routes with several stops
+Resuming navigation is more robust too. If GPS or routing is not ready at startup, route calculation is retried once they are available. When the position is not yet accurate enough, a message explains the wait and a usable map stays visible.
 
-Plan stops, change their order or skip one. The plan survives a restart. At an intermediate stop, a 30-second countdown runs only in drive mode. Brake gestures do not control this prompt; with the shortcut menu closed, pressing the seatbox switch pauses the plan. Leaving drive mode cancels the countdown. After a reached intermediate stop, entering drive mode again advances to the next stop.
+Frequent destinations such as home or work, the route overview and the option to skip a stop can all be added to the shortcut menu, keeping the main navigation actions within easy reach.
 
-USB Update Mode can install several named map and routing packs. With a recent GPS fix, the dashboard selects the matching region. Routes cannot cross region boundaries. Existing single-region installations remain supported; an existing regular routing archive needs an explicit migration before regional switching can work. See the [navigation handbook](/handbook/navigation.html).
+Several offline map regions can be stored on the scooter at once. After a one-time setup, the dashboard selects the appropriate region for the current position. Installation and updates use USB; routes cannot cross between separate regions. Map information labels are translated into German and English, and long values wrap.
 
-## Everyday use
+## The clock keeps running
 
-- **Trip counter and history:** The counter survives restarts. Choose whether it resets each ride, daily, on battery swap or only manually.
-- **Keycards:** Enroll and remove cards on the dashboard. New unlock cards are saved only when you choose Done.
-- **Sounds and notifications:** The dashboard plays cues for vehicle events, navigation and notifications when an amplifier is connected (disconnected on most scooters); messages with the same priority take turns.
-- **Hibernation:** An explicit request from parked first coordinates vehicle shutdown. A relative duration needs no synchronized clock; a recurring schedule does.
-- **Updates:** Preview the planned download size. A USB update with no applicable files finishes without rebooting.
-- **Bluetooth:** nRF firmware 2.14.0-ls and file transfer for compatible apps. Download log bundles or upload files to an inbox; transfer neither installs firmware nor activates maps.
+After waking from Hibernation, the clock shows the correct time without waiting for GPS. It keeps running while the scooter sleeps. After a complete loss of power, including the internal batteries, it needs to synchronize again, for example through GPS or the internet.
 
-This description follows the [published source pins for 1.4](https://github.com/librescoot/librescoot/blob/2847f3606bdc6e7c67a1e44bd14619bef9f369ff/stable.env). Sunshine is deployed separately.
+Hibernation can be started directly from parked. Hibernate for also works without a set clock; scheduled hibernation requires a valid time. A scooter woken by an alarm can go back to sleep afterwards.
+
+## A more versatile dashboard
+
+Choose the shortcut menu's actions and their order. Alongside navigation controls, it can hold the other actions you use most often. Speedometer, power and recuperation colors, as well as map styles, are customizable too.
+
+The startup animation fades into the dashboard, and the startup logo and animation are selectable. Automatic light or dark theme selection takes ambient light into account during startup. Automatic brightness uses a wider adjustment range, and the fixed brightness presets have also been revised.
+
+Warnings, navigation instructions and other notifications now share a common presentation. Multiple messages take turns, and long text scrolls. Important notices remain visible during connection problems and updates. Low main-battery charge and internal-battery charging warnings complement the charging information in the Info menu.
+
+Scooters with a connected amplifier also get new sounds for blinkers, navigation, notifications and vehicle actions. The amplifier is disconnected on most scooters, so these sounds will not be audible there.
+
+## Use an Android phone as a key
+
+The Librescoot Mobile app can set up a compatible Android phone as an NFC key and enroll it on the scooter. The unlocked phone then works at the reader like a keycard for locking and unlocking.
+
+Cards and phone keys can be added and removed directly on the dashboard. Names assigned in the app appear there too, along with a mark identifying the last-used card. Removing the last way to unlock the scooter requires confirmation.
+
+An optional setting can open the seatbox automatically when the scooter is unlocked, including with a keycard. It is off by default. The alarm briefly delays its initial warning to give a keycard or phone tap time to finish.
+
+## Trip log and energy overview
+
+The trip log saves distance, duration and GPS tracks on the scooter. Under Trip history, you can view completed rides with distance, riding time and average speed directly on the dashboard. Recorded GPS tracks can be shown on the map. Retention can be limited by age, number of trips or storage size, or automatic deletion can be turned off. Short distances below 100 metres on the odometer are not saved as completed trips.
+
+The trip counter also keeps its distance when the scooter is switched off and counts independently of trip history. Choose whether it resets after each ride, daily, on a battery swap or only manually.
+
+The new dashboard consumption page estimates net energy drawn from the traction batteries from changes in their remaining capacity. Values are grouped by ready-to-drive, parked and standby, making energy use outside a ride visible too. This is an estimate by operating phase, not an exact breakdown by electrical load; the recording start and gaps remain visible.
+
+Separately, the dashboard and web interface show energy consumed and recovered through regenerative braking in kWh, estimated from motor-controller data.
+
+## Messages and more options for apps
+
+Mobile carriers often send plan notices and data allowance warnings by SMS to the scooter's SIM card. These messages can now be read and deleted on the dashboard while parked or through compatible apps. Under Info > SMS, the list shows the sender and a message preview; messages open directly as plain text. Cancel is selected first when deleting. The inbox survives restarts. New messages can optionally be forwarded on the home network; set the number in the web interface's advanced settings. The dashboard shows the destination and can turn forwarding off. Forwarding is off by default and carrier charges may apply. With multi-SIM, the mobile plan determines whether SMS reach the scooter or another device.
+
+Compatible apps can also transfer files over Bluetooth, download diagnostic logs and resume interrupted transfers. They can control dashboard power and Service Mode, reset the trip counter and edit multi-stop routes. The Bluetooth interface also supports starting, checking and stopping Connect account pairing. Apps can also retrieve completed trips with details and recorded GPS points. Each app needs to support these functions.
+
+## A web interface for setup and maintenance
+
+The new web interface provides access to settings, keycards, navigation, vehicle and battery status, and updates when working on the scooter. It also supports file transfers and diagnostic log downloads.
+
+One way to connect is through the USB port in the footwell. This requires unscrewing the footwell cover and connecting a computer. With the scooter switched on (unlocked), open the [web interface](http://192.168.7.1:8090).
+
+A cloud account, such as Sunshine, can also be connected directly on the dashboard with Connect. Settings > Cloud appears when internet and main-controller connections are available. Under Connect account, briefly press the right brake to start pairing. While a valid short code is available, the dashboard displays a QR code containing it. After scanning, the [Connect portal](https://connect.librescoot.org/pair) fills in the code and removes it from the browser address. The short code can also be entered manually. The dashboard shows how long the code remains valid. The scooter must be online; starting is allowed in parked or standby. Account approval still requires explicit confirmation in the browser. The dashboard shows the code, confirmation and completion steps, explains longer waits and reports a lost connection.
+
+The web interface's Cloud page can also start pairing, show the code, expiry and status, and stop waiting. A configuration transaction already in progress finishes before stopping. Alternatively, the Sunshine connection can still be configured using a setup token or online installer link from your [Sunshine account settings](https://sunshine.rescoot.org/account/security#bootstrap-tokens).
+
+## Everyday improvements
+
+The dashboard indicates when battery activation is still in progress before riding starts. Regenerative braking is activated correctly even when riding off immediately after switching on. Parked-only screens close when riding starts, and using the menu no longer leaves the brake light stuck on. Indicator control processes switch and software requests one at a time; clock corrections no longer affect the blink cadence.
+
+A replacement battery is checked before activation. A single battery can be activated in ready-to-drive, but a second battery cannot be added there, even while stationary. Already-active batteries remain active when entering ready-to-drive.
+
+For the alarm, Stop ends a sounding alarm, which re-arms after five minutes. Disarm keeps it off until the scooter is used and locked again, Hibernation begins or eight hours have passed. It then re-arms automatically.
+
+Before an update, the web interface shows the required download size, while the dashboard reports progress and errors. After installation, the dashboard's automatic restart waits until the scooter is locked in standby. This prevents an unexpected dashboard restart while the scooter is in use. Recovery handles system and boot updates separately and keeps the dashboard active until the required boot-update restart. Restarting the update service alone does not count as a dashboard reboot. USB Update Mode also handles interruptions more reliably; if there is nothing to install, no restart is needed.
+
+## For developers and enthusiasts
+
+Custom scripts can react to vehicle states, button presses, battery changes or alarms. Rules are configured through [`lsc ext`](https://librescoot.org/en/docs/dev/lsc.html#event-service-rules); none are active by default.
+
+The kernel also includes the [networking support needed by Tailscale](https://librescoot.org/en/docs/dev/hardware.html#network-topology). The Tailscale client is not preinstalled. For troubleshooting, `lsc doctor` brings common problems together in one report; the full release notes cover further diagnostic and connectivity improvements.
