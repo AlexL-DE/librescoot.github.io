@@ -92,3 +92,5 @@ Vor einem Update zeigt die Web-Oberfläche das benötigte Datenvolumen, der Tach
 Eigene Skripte können auf Fahrzeugzustände, Tastenbetätigungen, Akkuänderungen oder Alarme reagieren. Die Regeln werden mit [`lsc ext`](https://librescoot.org/docs/dev/lsc.html#event-service-regeln) eingerichtet; standardmäßig sind keine aktiv.
 
 Der Kernel bringt außerdem die [für Tailscale nötige Netzwerkunterstützung](https://librescoot.org/docs/dev/hardware.html#netzwerk-topologie) mit. Der Tailscale-Client ist nicht vorinstalliert. Für die Fehlersuche bündelt `lsc doctor` häufige Probleme; die vollständigen Release Notes führen weitere Diagnose- und Verbindungsverbesserungen auf.
+
+Dieses Release ist [Patrick Stewart](https://de.wikipedia.org/wiki/Patrick_Stewart) gewidmet.

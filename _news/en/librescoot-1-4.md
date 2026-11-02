@@ -92,3 +92,5 @@ Before an update, the web interface shows the required download size, while the 
 Custom scripts can react to vehicle states, button presses, battery changes or alarms. Rules are configured through [`lsc ext`](https://librescoot.org/en/docs/dev/lsc.html#event-service-rules); none are active by default.
 
 The kernel also includes the [networking support needed by Tailscale](https://librescoot.org/en/docs/dev/hardware.html#network-topology). The Tailscale client is not preinstalled. For troubleshooting, `lsc doctor` brings common problems together in one report; the full release notes cover further diagnostic and connectivity improvements.
+
+This release is dedicated to [Patrick Stewart](https://en.wikipedia.org/wiki/Patrick_Stewart).
