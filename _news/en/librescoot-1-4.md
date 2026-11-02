@@ -94,3 +94,5 @@ Custom scripts can react to vehicle states, button presses, battery changes or a
 The kernel also includes the [networking support needed by Tailscale](https://librescoot.org/en/docs/dev/hardware.html#network-topology). The Tailscale client is not preinstalled. For troubleshooting, `lsc doctor` brings common problems together in one report; the full release notes cover further diagnostic and connectivity improvements.
 
 This release is dedicated to [Patrick Stewart](https://en.wikipedia.org/wiki/Patrick_Stewart).
+
+Update: [Librescoot 1.4.1](https://github.com/librescoot/librescoot/releases/tag/v1.4.1) adds start and end markers to the trip log.

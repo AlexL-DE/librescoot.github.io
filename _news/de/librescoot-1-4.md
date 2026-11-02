@@ -94,3 +94,5 @@ Eigene Skripte können auf Fahrzeugzustände, Tastenbetätigungen, Akkuänderung
 Der Kernel bringt außerdem die [für Tailscale nötige Netzwerkunterstützung](https://librescoot.org/docs/dev/hardware.html#netzwerk-topologie) mit. Der Tailscale-Client ist nicht vorinstalliert. Für die Fehlersuche bündelt `lsc doctor` häufige Probleme; die vollständigen Release Notes führen weitere Diagnose- und Verbindungsverbesserungen auf.
 
 Dieses Release ist [Patrick Stewart](https://de.wikipedia.org/wiki/Patrick_Stewart) gewidmet.
+
+Nachtrag: [Librescoot 1.4.1](https://github.com/librescoot/librescoot/releases/tag/v1.4.1) ergänzt Start- und Endmarkierungen im Fahrtenbuch.
