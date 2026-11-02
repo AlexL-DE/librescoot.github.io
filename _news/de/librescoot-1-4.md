@@ -53,7 +53,7 @@ Auf Wunsch öffnet sich die Sitzbank beim Entsperren automatisch, auch mit einer
 
 Das Fahrtenbuch speichert Strecke, Dauer und GPS-Verlauf auf dem Roller. Unter Fahrtenverlauf lassen sich abgeschlossene Fahrten mit Strecke, Fahrzeit und Durchschnittsgeschwindigkeit direkt am Tacho ansehen. Aufgezeichnete GPS-Spuren können auf der Karte angezeigt werden. Die Aufbewahrung lässt sich nach Alter, Fahrtenzahl oder Speichergröße begrenzen; die automatische Löschung kann auch ausgeschaltet werden. Kurze Strecken unter 100 Metern laut Kilometerzähler werden nicht als abgeschlossene Fahrt gespeichert.
 
-{% include news-screenshot.html src="/images/news/librescoot-1-4-trip-de.png" alt="Fahrtdetails mit Beispielwerten und GPS-Spur auf der Karte" caption='Fahrtdetails mit Beispieldaten und einer GPS-Spur entlang öffentlicher Straßen. Kartendaten © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>.' %}
+{% include news-screenshot.html src="/images/news/librescoot-1-4-trip-de.png" alt="Fahrtdetails mit Beispielwerten und GPS-Spur auf der Karte" caption='Fahrtdetails mit Beispieldaten und GPS-Spur. Start- und Endmarkierung sind ab Dashboard 1.24.1 verfügbar. Kartendaten © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>.' %}
 
 Auch der Tageskilometerzähler bleibt beim Ausschalten erhalten und zählt unabhängig vom Fahrtenbuch. Das Zurücksetzen ist konfigurierbar: nach jeder Fahrt, täglich, beim Akkuwechsel oder nur von Hand.
 
