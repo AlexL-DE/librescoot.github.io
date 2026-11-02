@@ -51,6 +51,8 @@ Auf Wunsch öffnet sich die Sitzbank beim Entsperren automatisch, auch mit einer
 
 ## Fahrtenbuch und Verbrauchsübersicht
 
+{% include news-screenshot.html src="/images/news/librescoot-1-4-trip-de.png" align="right" alt="Fahrtdetails mit Beispieldaten und aufgezeichneter Strecke" caption='Fahrtdetails mit Beispieldaten. Der verbesserte Kartenausschnitt ist ab Dashboard 1.24.2 verfügbar und noch nicht in Firmware 1.4.1 enthalten. Kartendaten © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>.' %}
+
 Das Fahrtenbuch speichert Strecke, Dauer und GPS-Verlauf auf dem Roller. Unter Fahrtenverlauf lassen sich abgeschlossene Fahrten mit Strecke, Fahrzeit und Durchschnittsgeschwindigkeit direkt am Tacho ansehen. Aufgezeichnete GPS-Spuren können auf der Karte angezeigt werden. Die Aufbewahrung lässt sich nach Alter, Fahrtenzahl oder Speichergröße begrenzen; die automatische Löschung kann auch ausgeschaltet werden. Kurze Strecken unter 100 Metern laut Kilometerzähler werden nicht als abgeschlossene Fahrt gespeichert.
 
 Auch der Tageskilometerzähler bleibt beim Ausschalten erhalten und zählt unabhängig vom Fahrtenbuch. Das Zurücksetzen ist konfigurierbar: nach jeder Fahrt, täglich, beim Akkuwechsel oder nur von Hand.

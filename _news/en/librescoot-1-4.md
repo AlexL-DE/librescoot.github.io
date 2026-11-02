@@ -51,6 +51,8 @@ An optional setting can open the seatbox automatically when the scooter is unloc
 
 ## Trip log and energy overview
 
+{% include news-screenshot.html src="/images/news/librescoot-1-4-trip-en.png" align="right" alt="Trip details with example data and a recorded route" caption='Trip details with example data. Improved map framing is available from dashboard 1.24.2 and is not included in firmware 1.4.1. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.' %}
+
 The trip log saves distance, duration and GPS tracks on the scooter. Under Trip history, you can view completed rides with distance, riding time and average speed directly on the dashboard. Recorded GPS tracks can be shown on the map. Retention can be limited by age, number of trips or storage size, or automatic deletion can be turned off. Short distances below 100 metres on the odometer are not saved as completed trips.
 
 The trip counter also keeps its distance when the scooter is switched off and counts independently of trip history. Choose whether it resets after each ride, daily, on a battery swap or only manually.
