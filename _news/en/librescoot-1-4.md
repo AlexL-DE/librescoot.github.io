@@ -15,6 +15,8 @@ Librescoot 1.4.0 "Spätsommer" expands navigation with multi-stop routes, an ove
 
 ## Routes for the whole tour
 
+{% include news-screenshot.html src="/images/news/librescoot-1-4-route-en.png" align="right" alt="Navigation map with three stops in central Berlin" caption='Route overview with three stops and example data. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.' %}
+
 A route can include several stops. Add destinations along the way, change their order or skip individual stops. The route overview shows the remaining route and upcoming destinations. After standby or a restart, the tour can be resumed without entering everything again.
 
 Resuming navigation is more robust too. If GPS or routing is not ready at startup, route calculation is retried once they are available. When the position is not yet accurate enough, a message explains the wait and a usable map stays visible.
@@ -22,8 +24,6 @@ Resuming navigation is more robust too. If GPS or routing is not ready at startu
 Frequent destinations such as home or work, the route overview and the option to skip a stop can all be added to the shortcut menu, keeping the main navigation actions within easy reach.
 
 Several offline map regions can be stored on the scooter at once. After a one-time setup, the dashboard selects the appropriate region for the current position. Installation and updates use USB; routes cannot cross between separate regions. Map information labels are translated into German and English, and long values wrap.
-
-{% include news-screenshot.html src="/images/news/librescoot-1-4-route-en.png" alt="Navigation map with three stops in central Berlin" caption='Route overview with three stops and example data. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.' %}
 
 ## The clock keeps running
 
@@ -53,8 +53,6 @@ An optional setting can open the seatbox automatically when the scooter is unloc
 
 The trip log saves distance, duration and GPS tracks on the scooter. Under Trip history, you can view completed rides with distance, riding time and average speed directly on the dashboard. Recorded GPS tracks can be shown on the map. Retention can be limited by age, number of trips or storage size, or automatic deletion can be turned off. Short distances below 100 metres on the odometer are not saved as completed trips.
 
-{% include news-screenshot.html src="/images/news/librescoot-1-4-trip-en.png" alt="Trip details with example values and a GPS track on the map" caption='Trip details with example data and a GPS track. Start and end markers are available from dashboard 1.24.1. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.' %}
-
 The trip counter also keeps its distance when the scooter is switched off and counts independently of trip history. Choose whether it resets after each ride, daily, on a battery swap or only manually.
 
 The new dashboard consumption page estimates net energy drawn from the traction batteries from changes in their remaining capacity. Values are grouped by ready-to-drive, parked and standby, making energy use outside a ride visible too. This is an estimate by operating phase, not an exact breakdown by electrical load; the recording start and gaps remain visible.
@@ -62,6 +60,8 @@ The new dashboard consumption page estimates net energy drawn from the traction 
 Separately, the dashboard and web interface show energy consumed and recovered through regenerative braking in kWh, estimated from motor-controller data.
 
 ## Messages and more options for apps
+
+{% include news-screenshot.html src="/images/news/librescoot-1-4-sms-en.png" align="right" alt="SMS message with an example mobile plan notice" caption="Read SMS directly on the dashboard. Sender and message are examples." %}
 
 Mobile carriers often send plan notices and data allowance warnings by SMS to the scooter's SIM card. These messages can now be read and deleted on the dashboard while parked or through compatible apps. Under Info > SMS, the list shows the sender and a message preview; messages open directly as plain text. Cancel is selected first when deleting. The inbox survives restarts. New messages can optionally be forwarded on the home network; set the number in the web interface's advanced settings. The dashboard shows the destination and can turn forwarding off. Forwarding is off by default and carrier charges may apply. With multi-SIM, the mobile plan determines whether SMS reach the scooter or another device.
 

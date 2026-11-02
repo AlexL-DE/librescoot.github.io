@@ -2,7 +2,7 @@
 {% assign screenshot_t = site.data.i18n[screenshot_lang].news %}
 {% assign screenshot_loading = include.loading | default: "lazy" %}
 {% assign screenshot_caption = include.caption | default: include.alt %}
-<figure class="news-screenshot{% if include.featured %} news-post-image news-screenshot-featured{% endif %}">
+<figure class="news-screenshot{% if include.featured %} news-post-image news-screenshot-featured{% endif %}{% if include.align == 'right' %} news-screenshot-inline{% endif %}">
     <button class="news-screenshot-button" type="button"
             data-full-src="{{ include.src | escape }}"
             data-alt="{{ include.alt | escape }}"

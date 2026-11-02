@@ -15,6 +15,8 @@ Librescoot 1.4.0 "Spätsommer" erweitert die Navigation um Routen mit mehreren S
 
 ## Routen für die ganze Tour
 
+{% include news-screenshot.html src="/images/news/librescoot-1-4-route-de.png" align="right" alt="Navigationskarte mit drei Zwischenstopps in der Berliner Innenstadt" caption='Routenübersicht mit drei Zwischenstopps und Beispieldaten. Kartendaten © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>.' %}
+
 Eine Route kann mehrere Stopps enthalten. Unterwegs lassen sich weitere Ziele ergänzen, die Reihenfolge ändern oder einzelne Stopps überspringen. Die Routenübersicht zeigt die verbleibende Strecke und die kommenden Ziele. Nach Standby oder einem Neustart lässt sich die Tour fortsetzen, ohne alles erneut einzugeben.
 
 Auch die Wiederaufnahme der Navigation ist robuster: Sind GPS oder Routenberechnung beim Start noch nicht bereit, wird die Berechnung erneut versucht, sobald sie verfügbar sind. Ist die Position noch zu ungenau, erklärt eine Meldung die Wartezeit; eine bereits nutzbare Karte bleibt sichtbar.
@@ -22,8 +24,6 @@ Auch die Wiederaufnahme der Navigation ist robuster: Sind GPS oder Routenberechn
 Häufige Ziele wie Zuhause oder Arbeit, die Routenübersicht und das Überspringen eines Stopps lassen sich ins Schnellmenü aufnehmen. Die wichtigsten Navigationsaktionen sind damit unterwegs direkt erreichbar.
 
 Mehrere Offline-Kartenregionen können gleichzeitig auf dem Roller liegen. Nach einmaliger Einrichtung wählt der Tacho anhand der Position die passende Region. Installation und Aktualisierung erfolgen per USB; Routen über die Grenzen getrennter Regionen sind nicht möglich. Die Karteninformationen sind auf Deutsch und Englisch übersetzt und brechen lange Werte um.
-
-{% include news-screenshot.html src="/images/news/librescoot-1-4-route-de.png" alt="Navigationskarte mit drei Zwischenstopps in der Berliner Innenstadt" caption='Routenübersicht mit drei Zwischenstopps und Beispieldaten. Kartendaten © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>.' %}
 
 ## Die Uhr läuft weiter
 
@@ -53,8 +53,6 @@ Auf Wunsch öffnet sich die Sitzbank beim Entsperren automatisch, auch mit einer
 
 Das Fahrtenbuch speichert Strecke, Dauer und GPS-Verlauf auf dem Roller. Unter Fahrtenverlauf lassen sich abgeschlossene Fahrten mit Strecke, Fahrzeit und Durchschnittsgeschwindigkeit direkt am Tacho ansehen. Aufgezeichnete GPS-Spuren können auf der Karte angezeigt werden. Die Aufbewahrung lässt sich nach Alter, Fahrtenzahl oder Speichergröße begrenzen; die automatische Löschung kann auch ausgeschaltet werden. Kurze Strecken unter 100 Metern laut Kilometerzähler werden nicht als abgeschlossene Fahrt gespeichert.
 
-{% include news-screenshot.html src="/images/news/librescoot-1-4-trip-de.png" alt="Fahrtdetails mit Beispielwerten und GPS-Spur auf der Karte" caption='Fahrtdetails mit Beispieldaten und GPS-Spur. Start- und Endmarkierung sind ab Dashboard 1.24.1 verfügbar. Kartendaten © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap-Mitwirkende</a>.' %}
-
 Auch der Tageskilometerzähler bleibt beim Ausschalten erhalten und zählt unabhängig vom Fahrtenbuch. Das Zurücksetzen ist konfigurierbar: nach jeder Fahrt, täglich, beim Akkuwechsel oder nur von Hand.
 
 Die neue Verbrauchsseite am Tacho schätzt die aus den Fahrakkus entnommene Nettoenergie aus Änderungen ihrer Restkapazität. Sie ordnet die Werte nach Fahrbereitschaft, Parkmodus und Standby. So wird auch der Energiebedarf außerhalb einer Fahrt sichtbar. Die Aufteilung ist eine Schätzung nach Betriebsphasen, keine genaue Bilanz einzelner Verbraucher; Erfassungsbeginn und Unterbrechungen bleiben erkennbar.
@@ -62,6 +60,8 @@ Die neue Verbrauchsseite am Tacho schätzt die aus den Fahrakkus entnommene Nett
 Getrennt davon zeigen Tacho und Web-Oberfläche die aus Motorcontroller-Daten geschätzte verbrauchte und durch Rekuperation zurückgewonnene Energie in kWh.
 
 ## Nachrichten und mehr Möglichkeiten für Apps
+
+{% include news-screenshot.html src="/images/news/librescoot-1-4-sms-de.png" align="right" alt="SMS-Nachricht mit einem beispielhaften Tarifhinweis" caption="SMS direkt am Tacho lesen. Absender und Nachricht sind Beispiele." %}
 
 Tarifhinweise oder Datenvolumenwarnungen des Mobilfunkanbieters landen oft per SMS auf der Roller-SIM. Diese Nachrichten lassen sich jetzt im Parkmodus am Tacho oder mit kompatiblen Apps lesen und löschen. Unter Info > SMS zeigt die Liste Absender und Textvorschau; Nachrichten lassen sich direkt öffnen und als Klartext lesen. Beim Löschen ist zunächst Abbrechen ausgewählt. Das Postfach bleibt über Neustarts erhalten. Neue Nachrichten können optional im Heimatnetz weitergeleitet werden; die Nummer wird in den erweiterten Einstellungen der Web-Oberfläche eingetragen. Am Tacho lassen sich das Ziel ansehen und die Weiterleitung ausschalten. Die Funktion ist standardmäßig aus und kann Tarifkosten verursachen. Bei Multi-SIM hängt es vom Tarif ab, ob SMS am Roller oder an einem anderen Gerät ankommen.
 

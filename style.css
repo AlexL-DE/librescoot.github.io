@@ -1529,6 +1529,18 @@ main > .section-news ~ .section:nth-child(odd) {
     text-wrap: balance;
 }
 
+@media (min-width: 760px) {
+    .news-post-body .news-screenshot-inline {
+        float: right;
+        width: min(38%, 300px);
+        margin: 0.3rem 0 1.25rem 1.75rem;
+    }
+
+    .news-post-body h2 {
+        clear: both;
+    }
+}
+
 /* Two views side by side, neither larger than a standalone screenshot. */
 .news-screenshot-grid {
     display: grid;
