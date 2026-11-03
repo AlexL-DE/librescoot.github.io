@@ -75,6 +75,8 @@ The new web interface provides access to settings, keycards, navigation, vehicle
 
 One way to connect is through the USB port in the footwell. This requires unscrewing the footwell cover and connecting a computer. With the scooter switched on (unlocked), open the [web interface](http://192.168.7.1:8090).
 
+{% include news-screenshot.html src="/images/news/librescoot-1-4-connect-en.png" align="right" alt="Connect pairing with a QR code and browser approval" caption="Connect pairing on the dashboard. The code shown is an invalid example." %}
+
 A cloud account, such as Sunshine, can also be connected directly on the dashboard with Connect. Settings > Cloud appears when internet and main-controller connections are available. Under Connect account, briefly press the right brake to start pairing. While a valid short code is available, the dashboard displays a QR code containing it. After scanning, the [Connect portal](https://connect.librescoot.org/pair) fills in the code and removes it from the browser address. The short code can also be entered manually. The dashboard shows how long the code remains valid. The scooter must be online; starting is allowed in parked or standby. Account approval still requires explicit confirmation in the browser. The dashboard shows the code, confirmation and completion steps, explains longer waits and reports a lost connection.
 
 The web interface's Cloud page can also start pairing, show the code, expiry and status, and stop waiting. A configuration transaction already in progress finishes before stopping. Alternatively, the Sunshine connection can still be configured using a setup token or online installer link from your [Sunshine account settings](https://sunshine.rescoot.org/account/security#bootstrap-tokens).
