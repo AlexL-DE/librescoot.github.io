@@ -1532,6 +1532,7 @@ main > .section-news ~ .section:nth-child(odd) {
 @media (min-width: 760px) {
     .news-post-body .news-screenshot-inline {
         float: right;
+        clear: right;
         width: min(38%, 300px);
         margin: 0.3rem 0 1.25rem 1.75rem;
     }

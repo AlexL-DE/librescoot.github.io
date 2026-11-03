@@ -33,6 +33,8 @@ Hibernation lässt sich direkt aus dem Parkmodus starten. Hibernate for funktion
 
 ## Mehr Möglichkeiten am Tacho
 
+{% include news-screenshot.html src="/images/news/librescoot-1-4-quick-de.png" align="right" alt="Schnellmenü am Tacho mit ausgewählter Kartenansicht" caption="Das Schnellmenü lässt sich mit häufig genutzten Aktionen belegen." %}
+
 Die Einträge und die Reihenfolge des Schnellmenüs lassen sich selbst zusammenstellen. Neben den Navigationsfunktionen können dort die anderen häufig genutzten Aktionen liegen. Farben von Tacho, Leistungs- und Rekuperationsanzeige sowie Kartenstile sind ebenfalls anpassbar.
 
 Die Startanimation geht fließend in den Tacho über; Startlogo und Animation sind wählbar. Das automatische helle oder dunkle Farbschema berücksichtigt bereits beim Start das Umgebungslicht. Die automatische Helligkeit nutzt einen größeren Regelbereich, auch die festen Helligkeitsstufen wurden neu abgestimmt.
@@ -56,6 +58,8 @@ Auf Wunsch öffnet sich die Sitzbank beim Entsperren automatisch, auch mit einer
 Das Fahrtenbuch speichert Strecke, Dauer und GPS-Verlauf auf dem Roller. Unter Fahrtenverlauf lassen sich abgeschlossene Fahrten mit Strecke, Fahrzeit und Durchschnittsgeschwindigkeit direkt am Tacho ansehen. Aufgezeichnete GPS-Spuren können auf der Karte angezeigt werden. Die Aufbewahrung lässt sich nach Alter, Fahrtenzahl oder Speichergröße begrenzen; die automatische Löschung kann auch ausgeschaltet werden. Kurze Strecken unter 100 Metern laut Kilometerzähler werden nicht als abgeschlossene Fahrt gespeichert.
 
 Auch der Tageskilometerzähler bleibt beim Ausschalten erhalten und zählt unabhängig vom Fahrtenbuch. Das Zurücksetzen ist konfigurierbar: nach jeder Fahrt, täglich, beim Akkuwechsel oder nur von Hand.
+
+{% include news-screenshot.html src="/images/news/librescoot-1-4-energy-de.png" align="right" alt="Verbrauchsübersicht am Tacho mit Beispielwerten für Fahrbereitschaft, Parkmodus und Standby" caption="Geschätzter Verbrauch nach Betriebsphasen mit Beispielwerten." %}
 
 Die neue Verbrauchsseite am Tacho schätzt die aus den Fahrakkus entnommene Nettoenergie aus Änderungen ihrer Restkapazität. Sie ordnet die Werte nach Fahrbereitschaft, Parkmodus und Standby. So wird auch der Energiebedarf außerhalb einer Fahrt sichtbar. Die Aufteilung ist eine Schätzung nach Betriebsphasen, keine genaue Bilanz einzelner Verbraucher; Erfassungsbeginn und Unterbrechungen bleiben erkennbar.
 

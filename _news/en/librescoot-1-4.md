@@ -33,6 +33,8 @@ Hibernation can be started directly from parked. Hibernate for also works withou
 
 ## A more versatile dashboard
 
+{% include news-screenshot.html src="/images/news/librescoot-1-4-quick-en.png" align="right" alt="Dashboard shortcut menu with map view selected" caption="The shortcut menu can be configured with frequently used actions." %}
+
 Choose the shortcut menu's actions and their order. Alongside navigation controls, it can hold the other actions you use most often. Speedometer, power and recuperation colors, as well as map styles, are customizable too.
 
 The startup animation fades into the dashboard, and the startup logo and animation are selectable. Automatic light or dark theme selection takes ambient light into account during startup. Automatic brightness uses a wider adjustment range, and the fixed brightness presets have also been revised.
@@ -56,6 +58,8 @@ An optional setting can open the seatbox automatically when the scooter is unloc
 The trip log saves distance, duration and GPS tracks on the scooter. Under Trip history, you can view completed rides with distance, riding time and average speed directly on the dashboard. Recorded GPS tracks can be shown on the map. Retention can be limited by age, number of trips or storage size, or automatic deletion can be turned off. Short distances below 100 metres on the odometer are not saved as completed trips.
 
 The trip counter also keeps its distance when the scooter is switched off and counts independently of trip history. Choose whether it resets after each ride, daily, on a battery swap or only manually.
+
+{% include news-screenshot.html src="/images/news/librescoot-1-4-energy-en.png" align="right" alt="Dashboard consumption overview with example values for riding, parked and standby" caption="Estimated consumption by operating state, shown with example values." %}
 
 The new dashboard consumption page estimates net energy drawn from the traction batteries from changes in their remaining capacity. Values are grouped by ready-to-drive, parked and standby, making energy use outside a ride visible too. This is an estimate by operating phase, not an exact breakdown by electrical load; the recording start and gaps remain visible.
 
