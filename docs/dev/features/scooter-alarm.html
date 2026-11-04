@@ -49,6 +49,10 @@ lsc settings set alarm.enabled true
 lsc settings set alarm.honk true
 lsc settings set alarm.duration 20</pre>
 
+    <p>An optional red dashboard LED pulse indicates an armed alarm in standby. It is disabled by default. Keycard feedback takes priority. The LED runs autonomously during sleep while its power supply remains available; it does not keep the scooter awake.</p>
+    <pre class="code-block">lsc settings set alarm.armed-led true
+lsc settings set alarm.armed-led false</pre>
+
     <p>Advanced trigger-source switches accept <code>true</code> or <code>false</code>:</p>
     <pre class="code-block">lsc settings set alarm.trigger.motion true
 lsc settings set alarm.trigger.motion false

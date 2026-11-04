@@ -50,6 +50,10 @@ lsc settings set alarm.enabled true
 lsc settings set alarm.honk true
 lsc settings set alarm.duration 20</pre>
 
+    <p>Ein optionaler roter LED-Impuls am Dashboard zeigt im Standby eine scharfgeschaltete Alarmanlage an. Er ist standardmäßig deaktiviert. Die Rückmeldung für Schlüsselkarten hat Vorrang. Die LED läuft im Schlafmodus autonom weiter, solange ihre Stromversorgung verfügbar bleibt; sie hält den Roller nicht wach.</p>
+    <pre class="code-block">lsc settings set alarm.armed-led true
+lsc settings set alarm.armed-led false</pre>
+
     <p>Die erweiterten Auslöserschalter akzeptieren <code>true</code> oder <code>false</code>:</p>
     <pre class="code-block">lsc settings set alarm.trigger.motion true
 lsc settings set alarm.trigger.motion false
