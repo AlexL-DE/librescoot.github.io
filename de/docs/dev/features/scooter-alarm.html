@@ -54,6 +54,10 @@ lsc settings set alarm.duration 20</pre>
     <pre class="code-block">lsc settings set alarm.armed-led true
 lsc settings set alarm.armed-led false</pre>
 
+    <p>Die erweiterte Einstellung <code>alarm.armed-led-hibernate</code> ist standardmäßig eingeschaltet und wirkt nur, wenn auch <code>alarm.armed-led</code> eingeschaltet ist. Mit kompatibler nRF-Firmware bleibt die LED-Versorgung im normalen Ruhezustand eingeschaltet. Das erhöht den Energieverbrauch. Beim Ausschalten bleibt das Blinken im Standby und im Schlafmodus erhalten, während im Ruhezustand die Versorgung wieder wie üblich abgeschaltet wird. Im tieferen Ruhezustand bei niedrigem Batteriestand geht die LED weiterhin aus.</p>
+    <pre class="code-block">lsc settings set alarm.armed-led-hibernate false
+lsc settings set alarm.armed-led-hibernate true</pre>
+
     <p>Die erweiterten Auslöserschalter akzeptieren <code>true</code> oder <code>false</code>:</p>
     <pre class="code-block">lsc settings set alarm.trigger.motion true
 lsc settings set alarm.trigger.motion false

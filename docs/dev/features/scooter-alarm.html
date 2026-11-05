@@ -53,6 +53,10 @@ lsc settings set alarm.duration 20</pre>
     <pre class="code-block">lsc settings set alarm.armed-led true
 lsc settings set alarm.armed-led false</pre>
 
+    <p>The advanced <code>alarm.armed-led-hibernate</code> setting is enabled by default and only takes effect when <code>alarm.armed-led</code> is enabled. With compatible nRF firmware, it keeps the indicator supply powered during normal hibernation, at the cost of additional battery drain. Disable it to keep blinking in standby and suspend but restore normal power cutoff in hibernation. Deep low-battery hibernation still turns the LED off.</p>
+    <pre class="code-block">lsc settings set alarm.armed-led-hibernate false
+lsc settings set alarm.armed-led-hibernate true</pre>
+
     <p>Advanced trigger-source switches accept <code>true</code> or <code>false</code>:</p>
     <pre class="code-block">lsc settings set alarm.trigger.motion true
 lsc settings set alarm.trigger.motion false
