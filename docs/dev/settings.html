@@ -24,6 +24,14 @@ description: Settings available in current development builds, grouped by servic
 </tbody>
 </table>
 
+<h3>keycard-service</h3>
+<table class="services-table">
+<thead><tr><th>Setting</th><th>Description</th><th>Default</th><th>Values / range</th></tr></thead>
+<tbody>
+<tr><td><strong>Alarm Armed LED</strong><br><code>alarm.armed-led</code></td><td>Pulse the dashboard LED red while the alarm is armed, when LED power is available. Keycard feedback takes priority.</td><td><code>false</code></td><td>bool</td></tr>
+</tbody>
+</table>
+
 <h3>battery-service</h3>
 
 <table class="services-table">
@@ -114,7 +122,7 @@ description: Settings available in current development builds, grouped by servic
 
 <section class="docs-section" id="advanced-settings"><h2>Advanced settings</h2>
 
-<details><summary>Show advanced settings (88)</summary>
+<details><summary>Show advanced settings (89)</summary>
 
 <p>These settings are intended for setup, diagnostics, or service configuration.</p>
 
@@ -143,6 +151,14 @@ description: Settings available in current development builds, grouped by servic
 <tr><td><strong>AUX-Low Keep-Active Exit Threshold</strong><br><code>scooter.battery-aux-low-keep-active-exit-mv</code></td><td>Set the AUX battery voltage at or above which the AUX-low keep-active override disengages. This must be greater than the enter threshold.</td><td><code>12000</code></td><td>0–any mV</td></tr>
 <tr><td><strong>Keep Active Battery on Seatbox Open</strong><br><code>scooter.battery-keep-active-on-seatbox-open</code></td><td>Keep the currently active main battery running when the seatbox opens instead of deactivating it.</td><td><code>false</code></td><td>bool</td></tr>
 <tr><td><strong>Maximum Battery Voltage Difference</strong><br><code>scooter.max-voltage-delta</code></td><td>Set the maximum voltage difference allowed when activating both batteries. Set to zero to disable the voltage-difference limit.</td><td><code>1000</code></td><td>0–any mV</td></tr>
+</tbody>
+</table>
+
+<h3>bluetooth-service</h3>
+<table class="services-table">
+<thead><tr><th>Setting</th><th>Description</th><th>Default</th><th>Values / range</th></tr></thead>
+<tbody>
+<tr><td><strong>Alarm Armed LED in Hibernation</strong><br><code>alarm.armed-led-hibernate</code></td><td>Keep the armed LED blinking during hibernation when <code>alarm.armed-led</code> is enabled. Increases standby power use; deep low-battery hibernation turns the LED off.</td><td><code>true</code></td><td>bool</td></tr>
 </tbody>
 </table>
 

@@ -21,9 +21,17 @@ redirect_from:
 <table class="services-table">
 <thead><tr><th>Setting</th><th>Description</th><th>Default</th><th>Values / range</th></tr></thead>
 <tbody>
-<tr><td><strong>Alarm Duration</strong><br><code>alarm.duration</code></td><td>Set how long a triggered alarm remains active.</td><td><code>30</code></td><td>0–300 seconds</td></tr>
+<tr><td><strong>Full Alarm Burst Duration</strong><br><code>alarm.duration</code></td><td>Duration of each full alarm burst with hazards and, when enabled, the horn. Further triggers do not extend a running burst. Since 1.4.2.</td><td><code>30</code></td><td>0–300 seconds</td></tr>
 <tr><td><strong>Alarm System</strong><br><code>alarm.enabled</code></td><td>Enable or disable the alarm system.</td><td><code>true</code></td><td>bool</td></tr>
-<tr><td><strong>Horn During Alarm</strong><br><code>alarm.honk</code></td><td>Sound the horn when the alarm is triggered.</td><td><code>false</code></td><td>bool</td></tr>
+<tr><td><strong>Horn During Alarm</strong><br><code>alarm.honk</code></td><td>Sound the horn when the alarm is triggered. The default changed in 1.4.2.</td><td><code>true</code> since 1.4.2; previously <code>false</code></td><td>bool</td></tr>
+</tbody>
+</table>
+
+<h3>keycard-service</h3>
+<table class="services-table">
+<thead><tr><th>Setting</th><th>Description</th><th>Default</th><th>Values / range</th></tr></thead>
+<tbody>
+<tr><td><strong>Alarm Armed LED</strong><br><code>alarm.armed-led</code></td><td>Pulse the dashboard LED red while the alarm is armed, when LED power is available. Keycard feedback takes priority. Since 1.4.2.</td><td><code>false</code></td><td>bool</td></tr>
 </tbody>
 </table>
 
@@ -117,7 +125,7 @@ redirect_from:
 
 <section class="docs-section" id="advanced-settings"><h2>Advanced settings</h2>
 
-<details><summary>Show advanced settings (87)</summary>
+<details><summary>Show advanced settings (89)</summary>
 
 <p>These settings are intended for setup, diagnostics, or service configuration.</p>
 
@@ -126,9 +134,10 @@ redirect_from:
 <table class="services-table">
 <thead><tr><th>Setting</th><th>Description</th><th>Default</th><th>Values / range</th></tr></thead>
 <tbody>
-<tr><td><strong>Immediate First-Motion Alarm</strong><br><code>alarm.hairtrigger</code></td><td>Sound a short alarm immediately after the first detected motion.</td><td><code>false</code></td><td>bool</td></tr>
-<tr><td><strong>Immediate Alarm Duration</strong><br><code>alarm.hairtrigger-duration</code></td><td>Set how long the immediate first-motion alarm remains active.</td><td><code>3</code></td><td>1–30 seconds</td></tr>
-<tr><td><strong>Level 1 Trigger Delay</strong><br><code>alarm.l1-cooldown</code></td><td>Set how long alarm-service waits after the first motion event before starting the level 1 motion check.</td><td><code>15</code></td><td>1–60 seconds</td></tr>
+<tr><td><strong>Short First-Trigger Alarm</strong><br><code>alarm.hairtrigger</code></td><td>Sound a short alarm after the first trigger and the 750 ms authentication grace period. Motion waking the scooter from hibernation only flashes the hazards. Since 1.4.2.</td><td><code>false</code></td><td>bool</td></tr>
+<tr><td><strong>Short First-Trigger Alarm Duration</strong><br><code>alarm.hairtrigger-duration</code></td><td>Requested duration of the short alarm; it can end early when the warning stage ends.</td><td><code>3</code></td><td>1–30 seconds</td></tr>
+<tr><td><strong>L2 Escalation Delay</strong><br><code>alarm.l1-cooldown</code></td><td>Minimum time after the first trigger before another motion, button or handlebar trigger can start the full alarm. Unauthorized seatbox opening bypasses the delay. Default changed in 1.4.2.</td><td><code>2</code> since 1.4.2; previously <code>15</code></td><td>1–60 seconds</td></tr>
+<tr><td><strong>Quiet Time Before Rearming</strong><br><code>alarm.quiet-time</code></td><td>Time without an accepted trigger before the alarm episode ends. A running burst finishes before rearming; the maximum-burst limit still applies. Since 1.4.2.</td><td><code>30</code></td><td>1–300 seconds</td></tr>
 <tr><td><strong>Trigger on Unauthorized Seatbox Opening</strong><br><code>alarm.seatbox-trigger</code></td><td>Trigger the alarm when the seatbox is opened without authorization.</td><td><code>true</code></td><td>bool</td></tr>
 <tr><td><strong>Trigger on Button Presses</strong><br><code>alarm.trigger.buttons</code></td><td>Trigger the alarm when a brake, horn, or seatbox button is pressed.</td><td><code>true</code></td><td>bool</td></tr>
 <tr><td><strong>Trigger on Handlebar Movement</strong><br><code>alarm.trigger.handlebar</code></td><td>Trigger the alarm when the handlebar lock sensor or position changes.</td><td><code>false</code></td><td>bool</td></tr>
@@ -145,6 +154,14 @@ redirect_from:
 <tr><td><strong>AUX-Low Keep-Active Exit Threshold</strong><br><code>scooter.battery-aux-low-keep-active-exit-mv</code></td><td>Set the AUX battery voltage at or above which the AUX-low keep-active override disengages. This must be greater than the enter threshold.</td><td><code>12000</code></td><td>0–any mV</td></tr>
 <tr><td><strong>Keep Active Battery on Seatbox Open</strong><br><code>scooter.battery-keep-active-on-seatbox-open</code></td><td>Keep the currently active main battery running when the seatbox opens instead of deactivating it.</td><td><code>false</code></td><td>bool</td></tr>
 <tr><td><strong>Maximum Battery Voltage Difference</strong><br><code>scooter.max-voltage-delta</code></td><td>Set the maximum voltage difference allowed when activating both batteries. Set to zero to disable the voltage-difference limit.</td><td><code>1000</code></td><td>0–any mV</td></tr>
+</tbody>
+</table>
+
+<h3>bluetooth-service</h3>
+<table class="services-table">
+<thead><tr><th>Setting</th><th>Description</th><th>Default</th><th>Values / range</th></tr></thead>
+<tbody>
+<tr><td><strong>Alarm Armed LED in Hibernation</strong><br><code>alarm.armed-led-hibernate</code></td><td>Keep the armed LED blinking during hibernation when <code>alarm.armed-led</code> is enabled. Increases standby power use; deep low-battery hibernation turns the LED off. Since 1.4.2.</td><td><code>true</code></td><td>bool</td></tr>
 </tbody>
 </table>
 
