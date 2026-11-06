@@ -23,6 +23,10 @@ description: Configure the scooter alarm, its trigger sources, and its response.
 
     <p>To avoid false positives while parking, handlebar triggers are ignored for 90 seconds after arming. An off-position reading must then persist for one second before it triggers the alarm.</p>
     <p>For diagnosis, the alarm records the source and timestamp of the last trigger.</p>
+    <p>The first trigger starts a warning, with 750 milliseconds for authentication before the hazards flash. After the <code>alarm.l1-cooldown</code> escalation delay (default two seconds), another trigger can start a full alarm. Triggers during that delay reset quiet time without escalating. Unauthorized seatbox opening bypasses the delay.</p>
+    <p>The advanced <code>alarm.quiet-time</code> setting controls how much time without an accepted trigger ends an alarm episode (default 30 seconds, range 1-300). Each accepted disturbance resets it, including while the horn sounds. <code>alarm.duration</code> controls each full alarm burst; movement does not extend a running burst. After the burst, outputs remain off until another disturbance starts the next burst or quiet time ends the episode. Quiet expiry returns directly to armed once the current burst finishes. Six bursts without sufficient quiet invoke a five-minute safety cooldown.</p>
+    <pre class="code-block">lsc settings set alarm.l1-cooldown 2
+lsc settings set alarm.quiet-time 30</pre>
 </section>
 
 <section class="docs-section">

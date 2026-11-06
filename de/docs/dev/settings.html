@@ -14,7 +14,7 @@ description: Einstellungen in aktuellen Entwicklungs-Builds, nach Services grupp
 <table class="services-table">
 <thead><tr><th>Einstellung</th><th>Beschreibung</th><th>Standard</th><th>Werte / Bereich</th></tr></thead>
 <tbody>
-<tr><td><strong>Alarmdauer</strong><br/><code>alarm.duration</code></td><td>Dauer eines ausgelösten Alarms festlegen.</td><td><code>30</code></td><td>0–300 Sekunden</td></tr>
+<tr><td><strong>Dauer eines Vollalarms</strong><br/><code>alarm.duration</code></td><td>Dauer jedes Vollalarms mit Warnblinkern und gegebenenfalls Hupe. Weitere Auslöser verlängern ihn nicht. Danach kann ein neuer Auslöser den nächsten Vollalarm starten, bis die Ruhezeit oder die Höchstzahl der Vollalarme erreicht ist.</td><td><code>30</code></td><td>0–300 Sekunden</td></tr>
 <tr><td><strong>Alarmanlage</strong><br/><code>alarm.enabled</code></td><td>Alarmanlage ein- oder ausschalten.</td><td><code>true</code></td><td>boolesch</td></tr>
 <tr><td><strong>Hupe bei Alarm</strong><br/><code>alarm.honk</code></td><td>Bei einem Alarm zusätzlich hupen.</td><td><code>false</code></td><td>boolesch</td></tr>
 </tbody>
@@ -95,15 +95,16 @@ description: Einstellungen in aktuellen Entwicklungs-Builds, nach Services grupp
 </table>
 </section>
 <section class="docs-section" id="advanced-settings"><h2>Erweiterte Einstellungen</h2>
-<details><summary>Erweiterte Einstellungen anzeigen (87)</summary>
+<details><summary>Erweiterte Einstellungen anzeigen (88)</summary>
 <p>Diese Einstellungen dienen Einrichtung, Diagnose oder Service-Konfiguration.</p>
 <h3>alarm-service</h3>
 <table class="services-table">
 <thead><tr><th>Einstellung</th><th>Beschreibung</th><th>Standard</th><th>Werte / Bereich</th></tr></thead>
 <tbody>
-<tr><td><strong>Sofortalarm bei erster Bewegung</strong><br/><code>alarm.hairtrigger</code></td><td>Schon bei der ersten erkannten Bewegung einen kurzen Alarm auslösen.</td><td><code>false</code></td><td>boolesch</td></tr>
-<tr><td><strong>Dauer des Sofortalarms</strong><br/><code>alarm.hairtrigger-duration</code></td><td>Dauer des kurzen Sofortalarms festlegen.</td><td><code>3</code></td><td>1–30 Sekunden</td></tr>
-<tr><td><strong>Wartezeit für Bewegungsprüfung</strong><br/><code>alarm.l1-cooldown</code></td><td>Wartezeit nach dem ersten Auslöser vor einer fünfsekündigen Prüfung auf weitere Auslöser. Während der Wartezeit lösen weitere Ereignisse keinen Vollalarm aus.</td><td><code>2</code></td><td>1–60 Sekunden</td></tr>
+<tr><td><strong>Kurzalarm beim ersten Auslöser</strong><br/><code>alarm.hairtrigger</code></td><td>Nach dem ersten Auslöser und der 750-ms-Frist zur Authentifizierung einen kurzen Alarm auslösen. Bewegung beim Aufwachen aus dem Winterschlaf löst nur die Warnblinker aus.</td><td><code>false</code></td><td>boolesch</td></tr>
+<tr><td><strong>Dauer des Kurzalarms</strong><br/><code>alarm.hairtrigger-duration</code></td><td>Gewünschte Dauer des Kurzalarms. Er kann mit dem Ende der Warnphase vorzeitig enden.</td><td><code>3</code></td><td>1–30 Sekunden</td></tr>
+<tr><td><strong>Verzögerung bis zum Vollalarm</strong><br/><code>alarm.l1-cooldown</code></td><td>Mindestzeit nach dem ersten Auslöser, bevor eine weitere Bewegung, Taste oder Lenkerbewegung den Vollalarm auslösen kann. Frühere Auslöser setzen die Ruhezeit zurück, lösen aber keinen Vollalarm aus. Unberechtigtes Öffnen der Sitzbank umgeht die Verzögerung.</td><td><code>2</code></td><td>1–60 Sekunden</td></tr>
+<tr><td><strong>Ruhezeit vor erneuter Scharfschaltung</strong><br/><code>alarm.quiet-time</code></td><td>Zeit ohne akzeptierten Auslöser, bis der Alarmvorgang endet und die normale scharfe Überwachung zurückkehrt. Jeder akzeptierte Auslöser setzt die Zeit zurück, auch während der Verzögerung und eines Vollalarms. Ein laufender Vollalarm endet regulär. Die Höchstzahl der Vollalarme gilt weiterhin.</td><td><code>30</code></td><td>1–300 Sekunden</td></tr>
 <tr><td><strong>Sitzbank-Alarm</strong><br/><code>alarm.seatbox-trigger</code></td><td>Alarm bei unbefugtem Öffnen der Sitzbank auslösen.</td><td><code>true</code></td><td>boolesch</td></tr>
 <tr><td><strong>Alarm durch Tasten</strong><br/><code>alarm.trigger.buttons</code></td><td>Alarm bei Betätigung von Bremse, Hupe oder Sitzbankknopf auslösen.</td><td><code>true</code></td><td>boolesch</td></tr>
 <tr><td><strong>Alarm durch Lenkerbewegung</strong><br/><code>alarm.trigger.handlebar</code></td><td>Alarm bei Änderungen am Lenkschloss oder an der Lenkerstellung auslösen.</td><td><code>false</code></td><td>boolesch</td></tr>

@@ -24,6 +24,10 @@ description: Alarmanlage, Auslöser und Alarmreaktion des Rollers konfigurieren.
 
     <p>Um Fehlalarme beim Abstellen zu vermeiden, werden Lenkerauslöser in den ersten 90 Sekunden nach dem Scharfschalten ignoriert. Danach muss eine abweichende Lenkerposition eine Sekunde lang bestehen, bevor sie Alarm auslöst.</p>
     <p>Zur Diagnose speichert die Alarmanlage den Auslöser und den Zeitpunkt des letzten Alarms.</p>
+    <p>Der erste Auslöser startet eine Warnung. Vor dem Warnblinken bleiben 750 Millisekunden zur Authentifizierung. Nach der Verzögerung <code>alarm.l1-cooldown</code> (standardmäßig zwei Sekunden) kann ein weiterer Auslöser den Vollalarm starten. Frühere Auslöser setzen nur die Ruhezeit zurück. Unberechtigtes Öffnen der Sitzbank umgeht die Verzögerung.</p>
+    <p>Die erweiterte Einstellung <code>alarm.quiet-time</code> bestimmt, wie viel Zeit ohne akzeptierten Auslöser den Alarmvorgang beendet (Standard 30 Sekunden, Bereich 1-300). Jeder akzeptierte Auslöser setzt die Zeit zurück, auch während die Hupe ertönt. <code>alarm.duration</code> bestimmt die Dauer jedes Vollalarms; weitere Bewegung verlängert ihn nicht. Danach bleiben Hupe und Warnblinker aus, bis ein weiterer Auslöser den nächsten Vollalarm startet oder die Ruhezeit abläuft. Nach Ablauf der Ruhezeit und Ende des laufenden Vollalarms kehrt die Anlage direkt zur scharfen Überwachung zurück. Nach sechs Vollalarmen ohne ausreichende Ruhe folgt eine fünfminütige Sicherheitspause.</p>
+    <pre class="code-block">lsc settings set alarm.l1-cooldown 2
+lsc settings set alarm.quiet-time 30</pre>
 </section>
 
 <section class="docs-section">
