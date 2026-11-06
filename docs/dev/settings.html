@@ -125,7 +125,7 @@ description: Settings available in current development builds, grouped by servic
 <tbody>
 <tr><td><strong>Immediate First-Motion Alarm</strong><br><code>alarm.hairtrigger</code></td><td>Sound a short alarm immediately after the first detected motion.</td><td><code>false</code></td><td>bool</td></tr>
 <tr><td><strong>Immediate Alarm Duration</strong><br><code>alarm.hairtrigger-duration</code></td><td>Set how long the immediate first-motion alarm remains active.</td><td><code>3</code></td><td>1–30 seconds</td></tr>
-<tr><td><strong>Level 1 Trigger Delay</strong><br><code>alarm.l1-cooldown</code></td><td>Set how long alarm-service waits after the first motion event before starting the level 1 motion check.</td><td><code>15</code></td><td>1–60 seconds</td></tr>
+<tr><td><strong>Level 1 Trigger Delay</strong><br><code>alarm.l1-cooldown</code></td><td>Wait after the first trigger before checking for another trigger during a five-second window. Repeated triggers during the wait do not escalate the alarm.</td><td><code>2</code></td><td>1–60 seconds</td></tr>
 <tr><td><strong>Trigger on Unauthorized Seatbox Opening</strong><br><code>alarm.seatbox-trigger</code></td><td>Trigger the alarm when the seatbox is opened without authorization.</td><td><code>true</code></td><td>bool</td></tr>
 <tr><td><strong>Trigger on Button Presses</strong><br><code>alarm.trigger.buttons</code></td><td>Trigger the alarm when a brake, horn, or seatbox button is pressed.</td><td><code>true</code></td><td>bool</td></tr>
 <tr><td><strong>Trigger on Handlebar Movement</strong><br><code>alarm.trigger.handlebar</code></td><td>Trigger the alarm when the handlebar lock sensor or position changes.</td><td><code>false</code></td><td>bool</td></tr>

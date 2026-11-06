@@ -103,7 +103,7 @@ description: Einstellungen in aktuellen Entwicklungs-Builds, nach Services grupp
 <tbody>
 <tr><td><strong>Sofortalarm bei erster Bewegung</strong><br/><code>alarm.hairtrigger</code></td><td>Schon bei der ersten erkannten Bewegung einen kurzen Alarm auslösen.</td><td><code>false</code></td><td>boolesch</td></tr>
 <tr><td><strong>Dauer des Sofortalarms</strong><br/><code>alarm.hairtrigger-duration</code></td><td>Dauer des kurzen Sofortalarms festlegen.</td><td><code>3</code></td><td>1–30 Sekunden</td></tr>
-<tr><td><strong>Wartezeit für Bewegungsprüfung</strong><br/><code>alarm.l1-cooldown</code></td><td>Wartezeit nach der ersten Bewegung vor der nächsten Alarmprüfung.</td><td><code>15</code></td><td>1–60 Sekunden</td></tr>
+<tr><td><strong>Wartezeit für Bewegungsprüfung</strong><br/><code>alarm.l1-cooldown</code></td><td>Wartezeit nach dem ersten Auslöser vor einer fünfsekündigen Prüfung auf weitere Auslöser. Während der Wartezeit lösen weitere Ereignisse keinen Vollalarm aus.</td><td><code>2</code></td><td>1–60 Sekunden</td></tr>
 <tr><td><strong>Sitzbank-Alarm</strong><br/><code>alarm.seatbox-trigger</code></td><td>Alarm bei unbefugtem Öffnen der Sitzbank auslösen.</td><td><code>true</code></td><td>boolesch</td></tr>
 <tr><td><strong>Alarm durch Tasten</strong><br/><code>alarm.trigger.buttons</code></td><td>Alarm bei Betätigung von Bremse, Hupe oder Sitzbankknopf auslösen.</td><td><code>true</code></td><td>boolesch</td></tr>
 <tr><td><strong>Alarm durch Lenkerbewegung</strong><br/><code>alarm.trigger.handlebar</code></td><td>Alarm bei Änderungen am Lenkschloss oder an der Lenkerstellung auslösen.</td><td><code>false</code></td><td>boolesch</td></tr>
